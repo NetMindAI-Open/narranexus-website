@@ -1,0 +1,85 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle } from "./theme-toggle";
+import { MobileNav } from "./mobile-nav";
+
+const navLinks = [
+  { key: "features", href: "/#features" },
+  { key: "docs", href: "/docs/getting-started/quick-start" },
+  { key: "blog", href: "/blog" },
+  { key: "roadmap", href: "/#roadmap" },
+] as const;
+
+export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const t = useTranslations("nav");
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 10);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-background/80 border-b border-border"
+          : "bg-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Left: Logo */}
+        <Link href="/" className="text-xl font-bold tracking-tight">
+          NarraNexus
+        </Link>
+
+        {/* Center: Nav links (desktop) */}
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.key}
+              href={link.href}
+              className="text-sm text-muted hover:text-foreground transition-colors"
+            >
+              {t(link.key)}
+            </Link>
+          ))}
+          <a
+            href="https://github.com/NetMindAI-Open/NarraNexus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-1"
+          >
+            {t("github")}
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
+
+        {/* Right: Actions (desktop) */}
+        <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher />
+          <ThemeToggle />
+          <Link
+            href="/docs/getting-started/quick-start"
+            className="flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90 transition-opacity"
+          >
+            {t("getStarted")}
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
+        {/* Mobile nav */}
+        <MobileNav />
+      </nav>
+    </header>
+  );
+}

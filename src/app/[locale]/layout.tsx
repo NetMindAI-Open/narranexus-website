@@ -5,6 +5,8 @@ import { ThemeProvider } from "next-themes";
 import { routing } from "../../../i18n/routing";
 import { notFound } from "next/navigation";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 import "@/styles/globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -38,7 +40,9 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            {children}
+            <Navbar />
+            <main className="pt-16">{children}</main>
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
