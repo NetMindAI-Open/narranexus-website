@@ -1,0 +1,50 @@
+---
+title: Installation
+description: Step-by-step guide to installing NarraNexus on your system
+order: 2
+---
+
+## Clone the Repository
+
+Start by cloning the NarraNexus repository from GitHub:
+
+```bash
+git clone https://github.com/NetMindAI-Open/NarraNexus.git
+cd NarraNexus
+```
+
+## Automated Setup
+
+The easiest way to install is using the provided setup script, which automatically detects your operating system, installs Python and Node.js dependencies, provisions the MySQL database via Docker Compose, and starts all services:
+
+```bash
+bash run.sh
+```
+
+This script handles the complete bootstrapping process including creating virtual environments, installing pip packages, running npm install for the frontend, and initializing the database schema.
+
+## Manual Setup
+
+If you prefer manual installation, follow these steps:
+
+1. **Backend dependencies** -- Create a Python virtual environment and install requirements:
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+2. **Frontend dependencies** -- Install Node.js packages for the React frontend:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+3. **Database** -- Start the infrastructure containers:
+   ```bash
+   docker compose up -d
+   ```
+
+## Verifying the Installation
+
+Once all services are running, the frontend should be available at `http://localhost:5173` and the backend API at `http://localhost:8000`. Visit the frontend URL to confirm everything is working. You can also check the API health endpoint at `http://localhost:8000/health`.

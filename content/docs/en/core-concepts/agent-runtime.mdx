@@ -1,0 +1,29 @@
+---
+title: Agent Runtime
+description: The 7-step pipeline that powers every NarraNexus agent
+order: 1
+---
+
+## Overview
+
+The Agent Runtime is the central execution engine in NarraNexus. Every agent, regardless of its purpose or configuration, processes requests through a consistent 7-step pipeline built on Python's asyncio. This pipeline ensures that modules can participate in each phase of reasoning, enabling rich, context-aware agent behavior.
+
+## The 7-Step Pipeline
+
+1. **Input Processing** -- The raw user input is parsed, sanitized, and normalized. Metadata such as timestamps, session IDs, and user identity are attached to the input context.
+
+2. **Context Building** -- The runtime gathers relevant context from all registered modules. The Memory module retrieves past interactions, the Awareness module extracts entities and intent, and the Social Network module provides relationship context.
+
+3. **Module Hooks** -- Each module is given an opportunity to augment the context or modify the processing pipeline through the Hook mechanism. This is where modules inject their specialized knowledge.
+
+4. **LLM Reasoning** -- The assembled context and user input are sent to the configured LLM provider (Claude, OpenAI, or Gemini) through the unified adapter layer. The model generates a reasoning response that may include tool calls.
+
+5. **Tool Execution** -- If the LLM requests tool usage, the runtime executes the corresponding MCP tools exposed by modules. Results are fed back to the LLM for further reasoning in an iterative loop.
+
+6. **Response Generation** -- The final LLM output is formatted into a structured response, including any attachments, citations, or UI elements required by the frontend.
+
+7. **State Update** -- The runtime persists the interaction to the Chat module, updates memory stores, refreshes relationship graphs, and triggers any post-processing jobs.
+
+## Multi-LLM Support
+
+The runtime's adapter layer abstracts away provider differences. Claude is accessed via the Claude Agent SDK, OpenAI through the OpenAI Agents SDK, and Gemini via the Google Gemini API. Each agent can be configured to use a different provider, and switching providers requires only a configuration change.

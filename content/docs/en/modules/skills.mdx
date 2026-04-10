@@ -1,0 +1,21 @@
+---
+title: Skills Module
+description: ClawHub marketplace for shareable agent capabilities
+order: 6
+---
+
+## Overview
+
+The Skills module connects agents to ClawHub, a marketplace for shareable capabilities. Skills are reusable packages of tools, prompts, and configurations that extend what an agent can do. Through ClawHub, the community can publish, discover, and install skills, enabling rapid capability expansion without custom development.
+
+## Skill Packages
+
+A skill package contains everything needed to add a new capability to an agent: MCP tool definitions, system prompt fragments, configuration schemas, and optional assets. Skills are versioned and published to ClawHub with metadata including descriptions, categories, and compatibility information.
+
+## Installing Skills
+
+Agents can browse and install skills from ClawHub at runtime. Once installed, a skill's tools become available to the LLM during the Tool Execution step, and its prompt fragments are injected during Context Building. Skills can be installed, updated, or removed without restarting the agent.
+
+## MCP Tools
+
+The module exposes tools for skill lifecycle management. `skills_search` queries ClawHub for skills matching a description or category. `skills_install` adds a skill to the current agent. `skills_list` shows all installed skills and their versions. `skills_remove` uninstalls a skill. The LLM can autonomously discover and install skills when it determines that a user request requires capabilities not currently available.

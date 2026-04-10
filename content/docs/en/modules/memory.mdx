@@ -1,0 +1,27 @@
+---
+title: Memory Module
+description: Long-term memory storage and retrieval powered by EverMemOS
+order: 0
+---
+
+## Overview
+
+The Memory module provides long-term storage and retrieval capabilities for NarraNexus agents through EverMemOS, a specialized memory operating system. It enables agents to remember past interactions, learn from experience, and maintain continuity across conversations.
+
+## Architecture
+
+EverMemOS uses a three-tier storage architecture designed for different retrieval patterns:
+
+- **MongoDB** -- Document storage for structured memory records, including metadata, timestamps, and relationship links.
+- **Elasticsearch** -- Full-text search indexing for keyword-based memory retrieval. Enables agents to find memories by content, entities, or topics.
+- **Milvus** -- Vector database for semantic similarity search. Memory embeddings allow agents to retrieve contextually relevant memories even when exact keywords do not match.
+
+## How It Works
+
+During the Context Building step of the agent pipeline, the Memory module's `on_context` hook queries all three storage backends to assemble relevant memories. The query is constructed from the current input's entities, topics, and semantic embedding. Retrieved memories are ranked by relevance and recency, then injected into the agent's context window.
+
+After the agent responds, the `on_state_update` hook persists the new interaction as a memory record, indexing it across all three backends for future retrieval.
+
+## MCP Tools
+
+The Memory module exposes MCP tools that allow the LLM to explicitly store or recall memories during reasoning. Tools include `memory_store` for saving important information, `memory_search` for querying past interactions, and `memory_forget` for removing outdated or incorrect memories.

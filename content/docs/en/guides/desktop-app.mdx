@@ -1,0 +1,21 @@
+---
+title: Desktop App
+description: Running NarraNexus as a native desktop application
+order: 2
+---
+
+## Overview
+
+NarraNexus can be run as a desktop application, providing a native experience for users who prefer a standalone app over a browser-based interface. The desktop app wraps the web frontend in a native window and manages the backend services automatically, simplifying the startup process.
+
+## Installation
+
+Download the desktop app installer for your platform from the releases page. The installer bundles all required dependencies and sets up the backend services. On first launch, the app will initialize the database and configuration, guiding you through LLM provider setup.
+
+## Features
+
+The desktop app provides the same functionality as the web interface with additional native integrations. System notifications alert you to agent activity and completed background jobs. Global keyboard shortcuts provide quick access to the conversation interface. The app manages Docker containers for you, starting and stopping infrastructure services as needed.
+
+## Configuration
+
+Desktop app settings are accessible from the application menu. In addition to the standard NarraNexus configuration options (LLM provider, module settings), the desktop app provides controls for startup behavior, notification preferences, and resource limits for the Docker containers. Configuration is stored locally and synced with the backend's `.env` file.

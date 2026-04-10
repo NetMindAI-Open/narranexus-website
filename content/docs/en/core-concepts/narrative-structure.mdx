@@ -1,0 +1,21 @@
+---
+title: Narrative Structure
+description: How NarraNexus organizes agent experiences into coherent narratives
+order: 4
+---
+
+## Overview
+
+NarraNexus is built around the concept that AI agents benefit from maintaining coherent narratives of their interactions and experiences. Rather than treating each conversation as an isolated event, the platform weaves interactions into a structured narrative that gives agents continuity, context, and a sense of ongoing relationships.
+
+## Narrative Layers
+
+The narrative structure operates across multiple layers. At the lowest level, individual messages form **episodes** -- discrete interaction units stored by the Event Memory module. Episodes are grouped into **threads** managed by the Chat module, representing continuous conversation sessions. Threads are connected through **relationships** tracked by the Social Network module, linking interactions to the entities involved.
+
+## Memory and Context
+
+The Memory module (EverMemOS) serves as the long-term narrative store, using a combination of MongoDB for document storage, Elasticsearch for full-text search, and Milvus for vector similarity. When the Awareness module extracts context from a new interaction, the Memory module retrieves relevant past narratives to inform the agent's response, creating a continuous experience.
+
+## Narrative Coherence
+
+The Agent Runtime's 7-step pipeline ensures narrative coherence by always building context before reasoning. The Awareness module identifies entities, topics, and emotional tone from the current input. This information is cross-referenced against the Social Network's relationship graph and the Memory module's stored narratives. The result is that every agent response is grounded in the full history of its interactions, maintaining consistency across conversations.

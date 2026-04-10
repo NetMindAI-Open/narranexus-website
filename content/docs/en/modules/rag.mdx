@@ -1,0 +1,21 @@
+---
+title: RAG Module
+description: Document retrieval and augmented generation using Google Gemini File Search
+order: 5
+---
+
+## Overview
+
+The RAG (Retrieval-Augmented Generation) module enables agents to search and reason over uploaded documents. It leverages Google Gemini's File Search capability to index documents and retrieve relevant passages at query time, allowing agents to ground their responses in specific source material.
+
+## How It Works
+
+Documents are uploaded to the RAG module and indexed using Google Gemini's file processing pipeline. When the agent needs to answer a question that may be covered by uploaded documents, the RAG module's hook injects relevant document passages into the context. The LLM can then cite specific sources in its response, improving accuracy and traceability.
+
+## Supported Formats
+
+The module supports a variety of document formats including PDF, plain text, Markdown, HTML, and common office formats. Documents are processed and chunked during upload, with embeddings generated for semantic search. Large documents are split into manageable chunks while preserving section boundaries.
+
+## MCP Tools
+
+The RAG module exposes several MCP tools for document management and search. `rag_upload` adds a new document to the index. `rag_search` performs a semantic search across all indexed documents, returning ranked passages with source attribution. `rag_list` shows all currently indexed documents. These tools give the LLM explicit control over when and how to leverage document knowledge during reasoning.

@@ -1,0 +1,40 @@
+---
+title: REST API
+description: HTTP API endpoints for agent management and system operations
+order: 0
+---
+
+## Overview
+
+The NarraNexus REST API is served by the FastAPI backend on port 8000. It provides endpoints for agent management, conversation operations, module configuration, and system administration. All endpoints return JSON responses and accept JSON request bodies. Authentication is handled via API keys or session tokens.
+
+## Base URL
+
+```
+http://localhost:8000/api/v1
+```
+
+In production deployments behind nginx, the API is typically available at `https://your-domain.com/api/v1`.
+
+## Agent Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/agents` | List all agents |
+| POST | `/agents` | Create a new agent |
+| GET | `/agents/{id}` | Get agent details |
+| PUT | `/agents/{id}` | Update agent configuration |
+| DELETE | `/agents/{id}` | Remove an agent |
+
+## Conversation Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/conversations` | List conversations |
+| POST | `/conversations` | Start a new conversation |
+| GET | `/conversations/{id}/messages` | Get message history |
+| POST | `/conversations/{id}/messages` | Send a message (non-streaming) |
+
+## Error Handling
+
+The API uses standard HTTP status codes. Errors return a JSON object with `error` and `detail` fields. Rate limiting is applied per API key, with limits configurable in the backend settings. The `/health` endpoint is available without authentication for monitoring purposes.

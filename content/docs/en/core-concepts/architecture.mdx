@@ -1,0 +1,21 @@
+---
+title: Architecture
+description: Overview of the NarraNexus layered architecture and data flow
+order: 0
+---
+
+## Layered Design
+
+NarraNexus follows a layered architecture that separates concerns across four tiers. The **Frontend** layer is a React 19 application built with Vite, served on port 5173, providing the user interface for interacting with agents. The **Backend** layer is a FastAPI server on port 8000 that handles HTTP and WebSocket connections, authentication, and request routing. The **Agent Runtime** layer manages the core reasoning pipeline -- a 7-step process that transforms user input into agent responses. Finally, the **Data** layer comprises MySQL for relational storage, Redis for caching, and module-specific stores.
+
+## Request Flow
+
+When a user sends a message, it travels through these layers sequentially. The frontend dispatches the message via WebSocket to the FastAPI backend. The backend identifies the target agent and invokes its runtime. The runtime executes its 7-step pipeline (Input Processing, Context Building, Module Hooks, LLM Reasoning, Tool Execution, Response Generation, and State Update), calling into registered modules at each hook point. The response propagates back through the same layers to the user.
+
+## Module System
+
+All capabilities in NarraNexus are delivered through modules. The platform ships with nine built-in modules -- Memory, Awareness, Chat, Social Network, Jobs, RAG, Skills, Matrix, and Event Memory -- but the architecture is extensible. Each module registers hooks with the runtime and exposes tools via the Model Context Protocol (MCP), allowing LLMs to invoke module functionality during the Tool Execution step.
+
+## Infrastructure
+
+Docker Compose orchestrates the supporting services: MySQL for persistent storage, Redis for session caching and pub/sub, and Matrix/Synapse for inter-agent communication. For production deployments, systemd manages service lifecycles and nginx provides reverse proxying. The stack is compatible with AWS infrastructure for cloud hosting.

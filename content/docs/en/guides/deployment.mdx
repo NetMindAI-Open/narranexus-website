@@ -1,0 +1,31 @@
+---
+title: Deployment
+description: Deploying NarraNexus to production environments
+order: 3
+---
+
+## Overview
+
+NarraNexus is designed for production deployment on Linux servers with Docker, systemd, and nginx. The platform supports AWS-compatible infrastructure and can be scaled horizontally for high-traffic scenarios. This guide covers the recommended production setup.
+
+## Infrastructure Requirements
+
+A production deployment requires a Linux server (Ubuntu 22.04 recommended) with at least 4 CPU cores, 16 GB RAM, and 100 GB storage. Docker and Docker Compose manage the database and messaging infrastructure. The server should have a public IP or be behind a load balancer for external access.
+
+## systemd Services
+
+In production, the backend and frontend run as systemd services for automatic startup and crash recovery. Service unit files are provided in the repository's `deploy/` directory. Enable them with:
+
+```bash
+sudo cp deploy/*.service /etc/systemd/system/
+sudo systemctl enable narranexus-backend narranexus-frontend
+sudo systemctl start narranexus-backend narranexus-frontend
+```
+
+## nginx Configuration
+
+An nginx reverse proxy handles TLS termination, static file serving, and WebSocket proxying. The provided nginx configuration routes API requests to the FastAPI backend on port 8000 and frontend requests to the Vite build output. WebSocket connections are proxied with the appropriate upgrade headers for real-time messaging.
+
+## Scaling Considerations
+
+For high-traffic deployments, the FastAPI backend can be scaled horizontally behind a load balancer. Redis handles session affinity for WebSocket connections. The MySQL database should be configured with replication for high availability. Monitor resource usage through the built-in system monitoring dashboard.

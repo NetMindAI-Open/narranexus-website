@@ -1,0 +1,21 @@
+---
+title: Social Network Module
+description: Entity relationship graphs and social context tracking
+order: 3
+---
+
+## Overview
+
+The Social Network module maintains a graph of entities and their relationships as perceived by each agent. This enables agents to understand social dynamics, recall relationship history, and tailor their behavior based on interpersonal context. The module builds and updates the graph automatically as the agent interacts with users and learns about their connections.
+
+## Entity Graph
+
+At the core of this module is a directed graph where nodes represent entities (people, organizations, concepts) and edges represent relationships between them. Each relationship edge carries attributes including type (colleague, friend, reports-to), strength, sentiment, and a history of interactions that informed the relationship assessment.
+
+## Context Contribution
+
+During the Context Building step, the Social Network module identifies entities mentioned in the current interaction (using output from the Awareness module) and retrieves their relationship context. If a user mentions a colleague, the agent can recall previous discussions involving that person, the nature of the relationship, and any relevant social dynamics.
+
+## MCP Tools
+
+The module exposes tools for the LLM to explicitly query or update the social graph. `social_lookup` retrieves the relationship context for a given entity. `social_connect` creates or updates a relationship between two entities. `social_graph` returns a subgraph centered on a specified entity, useful for understanding complex social networks the agent has observed over time.

@@ -1,0 +1,26 @@
+---
+title: Breaking Changes
+description: Policy and process for handling breaking changes in NarraNexus
+order: 2
+---
+
+## Overview
+
+NarraNexus follows semantic versioning and treats breaking changes with care. This document describes what constitutes a breaking change, how they are communicated, and how to migrate when they occur.
+
+## What Constitutes a Breaking Change
+
+A breaking change is any modification that requires existing users to update their configuration, code, or workflow. This includes removal or renaming of REST API endpoints, changes to the WebSocket message format, modifications to the module hook interface, removal of MCP tools, changes to the configuration file schema, and database schema changes that require manual migration.
+
+## Deprecation Process
+
+Before removing or changing functionality, the following process is followed:
+
+1. **Deprecation notice** -- The feature is marked as deprecated in the documentation and release notes. Code-level deprecation warnings are added where applicable.
+2. **Migration guide** -- A guide is published explaining how to transition to the replacement feature.
+3. **Grace period** -- The deprecated feature remains functional for at least one minor version cycle, giving users time to migrate.
+4. **Removal** -- The deprecated feature is removed in the next major version.
+
+## Migration Support
+
+When breaking changes are necessary, migration scripts are provided where possible. Database schema changes include automated migration scripts. Configuration format changes include a conversion utility. The changelog documents all breaking changes with specific migration instructions for each one.
