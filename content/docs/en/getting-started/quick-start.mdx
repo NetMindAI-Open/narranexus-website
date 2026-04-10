@@ -1,0 +1,39 @@
+---
+title: Quick Start
+description: Get NarraNexus up and running in minutes
+order: 0
+---
+
+## Prerequisites
+
+- Python 3.13+
+- Node.js 20+
+- Docker (for MySQL)
+- Git
+
+## Installation
+
+Clone the repository and run the setup script:
+
+```bash
+git clone https://github.com/NetMindAI-Open/NarraNexus.git
+cd NarraNexus
+bash run.sh
+```
+
+The run.sh script automatically detects your OS, installs dependencies, sets up MySQL via Docker, and starts all services.
+
+## Configuration
+
+After first run, configure your LLM provider in the .env file:
+
+```bash
+LLM_PROVIDER=claude
+ANTHROPIC_API_KEY=your-key-here
+```
+
+## Next Steps
+
+- Read the Architecture guide to understand the system
+- Check out Examples for real-world usage patterns
+- Explore the Modules documentation
