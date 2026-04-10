@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
@@ -17,6 +18,28 @@ const jetbrainsMono = JetBrains_Mono({
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const baseUrl = "https://narranexus.dev";
+
+  const languages: Record<string, string> = {};
+  for (const loc of routing.locales) {
+    const prefix = loc === routing.defaultLocale ? "" : `/${loc}`;
+    languages[loc] = `${baseUrl}${prefix}`;
+  }
+
+  return {
+    alternates: {
+      canonical: locale === routing.defaultLocale ? baseUrl : `${baseUrl}/${locale}`,
+      languages,
+    },
+  };
 }
 
 export default async function LocaleLayout({
