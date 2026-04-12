@@ -39,12 +39,11 @@ export function Navbar() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/images/logo.png"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logo.svg"
             alt="NarraNexus"
-            width={36}
-            height={36}
-            className="rounded"
+            className="h-10 w-auto rounded"
           />
           <span className="text-xl font-bold tracking-tight">NarraNexus</span>
         </Link>
