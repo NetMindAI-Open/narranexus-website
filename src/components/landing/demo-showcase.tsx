@@ -22,10 +22,11 @@ export function DemoShowcase() {
     <section className="py-24">
       <div className="mx-auto max-w-5xl px-6">
         <ScrollReveal>
-          <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
-            {t("title")}
+          <h2 className="mb-4 text-center font-mono text-3xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl text-glow-cyan">
+            <span className="text-accent">{">"}</span> {t("title")}
+            <span className="ml-2 animate-pulse text-accent">_</span>
           </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-muted">
+          <p className="mx-auto mb-12 max-w-2xl text-center font-mono text-muted tracking-wide">
             {t("description")}
           </p>
         </ScrollReveal>
@@ -37,10 +38,10 @@ export function DemoShowcase() {
               <button
                 key={tab.id}
                 onClick={() => setActive(tab.id)}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-none border border-hud px-4 py-2 font-mono text-sm tracking-wide transition-colors ${
                   active === tab.id
-                    ? "bg-accent text-white"
-                    : "bg-card text-muted hover:text-foreground"
+                    ? "bg-accent/10 text-glow-cyan border-accent text-accent"
+                    : "bg-transparent text-muted hover:bg-white/[0.02] hover:text-white"
                 }`}
               >
                 {t(tab.labelKey)}
@@ -49,7 +50,9 @@ export function DemoShowcase() {
           </div>
 
           {/* Image / Placeholder */}
-          <div className="relative aspect-video overflow-hidden rounded-xl border border-border bg-card">
+          <div className="group relative aspect-video overflow-hidden rounded-none border-hud border bg-transparent p-1 transition-colors hover:border-accent">
+            <div className="absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-accent opacity-50 transition-opacity group-hover:opacity-100" />
+            <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-accent opacity-50 transition-opacity group-hover:opacity-100" />
             {imgError[current.id] ? (
               <div className="flex h-full w-full items-center justify-center text-muted">
                 <span className="text-sm">{t("placeholder")}</span>

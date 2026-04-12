@@ -33,10 +33,11 @@ export function Architecture() {
     <section className="py-24">
       <div className="mx-auto max-w-6xl px-6">
         <ScrollReveal>
-          <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
-            {t("title")}
+          <h2 className="mb-4 text-center font-mono text-3xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl text-glow-cyan">
+            <span className="text-accent">{">"}</span> {t("title")}
+            <span className="ml-2 animate-pulse text-accent">_</span>
           </h2>
-          <p className="mx-auto mb-16 max-w-2xl text-center text-muted">
+          <p className="mx-auto mb-16 max-w-2xl text-center font-mono text-muted tracking-wide">
             {t("description")}
           </p>
         </ScrollReveal>
@@ -51,12 +52,15 @@ export function Architecture() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.15 }}
-                  className="flex w-40 flex-col items-center rounded-lg border border-border bg-card p-4 text-center"
+                  className="group relative flex w-40 flex-col items-center rounded-none border border-white/10 bg-transparent p-4 text-center border-hud transition-all hover:bg-white/[0.02] hover:border-accent"
                 >
-                  <span className="text-sm font-semibold text-foreground">
+                  <div className="absolute left-0 top-0 h-2 w-2 border-l border-t border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-0 right-0 h-2 w-2 border-b border-r border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  <span className="text-sm font-semibold font-mono uppercase text-white transition-colors group-hover:text-glow-cyan">
                     {step.label}
                   </span>
-                  <span className="mt-1 text-xs text-muted">{step.sub}</span>
+                  <span className="mt-1 text-xs font-mono text-muted group-hover:text-white/80 transition-colors">{step.sub}</span>
                 </motion.div>
                 {i < pipelineSteps.length - 1 && (
                   <div className="hidden h-px w-8 bg-border md:block" />
@@ -74,10 +78,10 @@ export function Architecture() {
                 key={mod}
                 onMouseEnter={() => setHoveredModule(mod)}
                 onMouseLeave={() => setHoveredModule(null)}
-                className={`cursor-default rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
+                className={`cursor-default rounded-none border px-4 py-1.5 font-mono text-sm tracking-wide transition-colors ${
                   hoveredModule === mod
-                    ? "border-accent bg-accent/10 text-accent"
-                    : "border-border bg-card text-muted"
+                    ? "border-accent bg-accent/10 text-glow-cyan text-accent"
+                    : "border-hud bg-transparent text-muted hover:bg-white/[0.02] hover:text-white"
                 }`}
               >
                 {mod}

@@ -72,7 +72,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {columns.map((col) => (
             <div key={col.titleKey}>
-              <h3 className="text-sm font-semibold text-foreground mb-3">
+              <h3 className="font-mono text-sm font-semibold uppercase tracking-widest text-white mb-3">
                 {t(col.titleKey as "product" | "docs" | "community" | "organization")}
               </h3>
               <ul className="space-y-2">
@@ -83,7 +83,7 @@ export function Footer() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-1"
+                        className="font-mono text-sm text-muted hover:text-glow-cyan hover:text-accent transition-colors flex items-center gap-1"
                       >
                         {link.label}
                         <ExternalLink className="h-3 w-3" />
@@ -91,7 +91,7 @@ export function Footer() {
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-sm text-muted hover:text-foreground transition-colors"
+                        className="font-mono text-sm text-muted hover:text-glow-cyan hover:text-accent transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -103,7 +103,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 pt-6 border-t border-border text-center text-sm text-muted">
+        <div className="mt-10 pt-6 border-t border-border font-mono text-center text-sm text-muted">
           {t("copyright", { year: new Date().getFullYear() })}
         </div>
       </div>
