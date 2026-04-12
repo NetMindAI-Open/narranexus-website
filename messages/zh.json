@@ -62,7 +62,7 @@
   },
   "team": {
     "title": "开发团队",
-    "description": "由 Protagolabs 和 NetMindAI 社区共建的开源项目。",
+    "description": "由 NetMind 和 NetMindAI 社区共建的开源项目。",
     "license": "基于 CC BY-NC 4.0 许可"
   },
   "cta": {
@@ -76,7 +76,7 @@
     "docs": "文档",
     "community": "社区",
     "organization": "组织",
-    "copyright": "© {year} Protagolabs, Inc. 保留所有权利。"
+    "copyright": "© {year} NetMind 保留所有权利。"
   },
   "docs": {
     "search": "搜索文档...",

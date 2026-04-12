@@ -38,16 +38,15 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/images/logo.png"
             alt="NarraNexus"
-            width={691}
-            height={1024}
-            className="h-12 w-auto rounded object-contain"
-            priority
+            width={36}
+            height={36}
+            className="rounded"
           />
-          <span className="text-lg font-bold tracking-tight">NarraNexus</span>
+          <span className="text-xl font-bold tracking-tight">NarraNexus</span>
         </Link>
 
         {/* Center: Nav links (desktop) */}
@@ -62,7 +61,7 @@ export function Navbar() {
             </Link>
           ))}
           <a
-            href="https://github.com/NetMindAI-Open/NarraNexus"
+            href="https://github.com/johnsonice/narranexus-website"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-1"

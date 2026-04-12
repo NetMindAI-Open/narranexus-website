@@ -6,13 +6,13 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const orgs = [
   {
-    name: "Protagolabs",
-    url: "https://protagolabs.com",
+    name: "Netmind",
+    url: "https://www.netmind.ai/",
     description: "AI research and product company.",
   },
   {
-    name: "NetMindAI-Open",
-    url: "https://github.com/NetMindAI-Open",
+    name: "johnsonice",
+    url: "https://github.com/johnsonice",
     description: "Open-source community on GitHub.",
   },
 ];

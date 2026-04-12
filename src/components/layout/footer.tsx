@@ -26,17 +26,17 @@ const columns = [
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/NetMindAI-Open/NarraNexus",
+        href: "https://github.com/johnsonice/narranexus-website",
         external: true,
       },
       {
         label: "Discussions",
-        href: "https://github.com/NetMindAI-Open/NarraNexus/discussions",
+        href: "https://github.com/johnsonice/narranexus-website/discussions",
         external: true,
       },
       {
         label: "Issues",
-        href: "https://github.com/NetMindAI-Open/NarraNexus/issues",
+        href: "https://github.com/johnsonice/narranexus-website/issues",
         external: true,
       },
     ],
@@ -45,8 +45,8 @@ const columns = [
     titleKey: "organization",
     links: [
       {
-        label: "Protagolabs",
-        href: "https://protagolabs.com",
+        label: "Netmind",
+        href: "https://www.netmind.ai/",
         external: true,
       },
       {
@@ -56,7 +56,7 @@ const columns = [
       },
       {
         label: "Twitter / X",
-        href: "https://x.com/ProtagoLabs",
+        href: "https://x.com/NetmindAi",
         external: true,
       },
     ],
