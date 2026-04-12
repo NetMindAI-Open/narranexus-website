@@ -104,5 +104,21 @@
     "es": "Español",
     "fr": "Français",
     "de": "Deutsch"
+  },
+  "architecture": {
+    "title": "System Architecture",
+    "description": "A modular pipeline from user interface to persistent storage."
+  },
+  "demoShowcase": {
+    "title": "See It in Action",
+    "description": "Explore the NarraNexus interface and capabilities.",
+    "tabInterface": "Agent Interface",
+    "tabSetup": "Quick Setup",
+    "tabDemo": "Feature Demo",
+    "placeholder": "Screenshot coming soon"
+  },
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied!"
   }
 }

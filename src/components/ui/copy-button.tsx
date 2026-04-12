@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface CopyButtonProps {
   text: string;
@@ -9,6 +10,7 @@ interface CopyButtonProps {
 
 export function CopyButton({ text }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
+  const t = useTranslations("common");
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(text);
@@ -24,12 +26,12 @@ export function CopyButton({ text }: CopyButtonProps) {
       {copied ? (
         <>
           <Check className="h-3.5 w-3.5" />
-          Copied!
+          {t("copied")}
         </>
       ) : (
         <>
           <Copy className="h-3.5 w-3.5" />
-          Copy
+          {t("copy")}
         </>
       )}
     </button>

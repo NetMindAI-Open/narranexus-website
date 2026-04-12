@@ -104,5 +104,21 @@
     "es": "Español",
     "fr": "Français",
     "de": "Deutsch"
+  },
+  "architecture": {
+    "title": "系统架构",
+    "description": "从用户界面到持久化存储的模块化管道。"
+  },
+  "demoShowcase": {
+    "title": "功能演示",
+    "description": "探索 NarraNexus 界面与功能。",
+    "tabInterface": "智能体界面",
+    "tabSetup": "快速安装",
+    "tabDemo": "功能展示",
+    "placeholder": "截图即将上线"
+  },
+  "common": {
+    "copy": "复制",
+    "copied": "已复制！"
   }
 }

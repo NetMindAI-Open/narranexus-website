@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const pipelineSteps = [
@@ -26,16 +27,17 @@ const modules = [
 
 export function Architecture() {
   const [hoveredModule, setHoveredModule] = useState<string | null>(null);
+  const t = useTranslations("architecture");
 
   return (
     <section className="py-24">
       <div className="mx-auto max-w-6xl px-6">
         <ScrollReveal>
           <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
-            System Architecture
+            {t("title")}
           </h2>
           <p className="mx-auto mb-16 max-w-2xl text-center text-muted">
-            A modular pipeline from user interface to persistent storage.
+            {t("description")}
           </p>
         </ScrollReveal>
 

@@ -35,6 +35,10 @@ export async function generateMetadata({
   }
 
   return {
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
     alternates: {
       canonical: locale === routing.defaultLocale ? baseUrl : `${baseUrl}/${locale}`,
       languages,

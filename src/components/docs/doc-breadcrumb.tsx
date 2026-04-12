@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 interface DocBreadcrumbProps {
   slug: string[];
@@ -13,13 +14,14 @@ function formatLabel(text: string): string {
     .join(" ");
 }
 
-export function DocBreadcrumb({ slug, locale }: DocBreadcrumbProps) {
+export async function DocBreadcrumb({ slug, locale }: DocBreadcrumbProps) {
+  const t = await getTranslations("nav");
   const docsHref = locale === "en" ? "/docs" : `/${locale}/docs`;
 
   return (
     <nav className="flex items-center gap-1 text-sm text-muted mb-4">
       <Link href={docsHref} className="hover:text-foreground transition-colors">
-        Docs
+        {t("docs")}
       </Link>
       {slug.map((segment, i) => (
         <span key={segment} className="flex items-center gap-1">
