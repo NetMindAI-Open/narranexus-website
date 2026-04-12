@@ -12,7 +12,7 @@ const command =
 const DMG_URL =
   "https://github.com/NetMindAI-Open/NarraNexus/releases/latest/download/NarraNexus-1.0.9-universal.dmg";
 
-const osTabs = ["Linux", "macOS", "Windows (WSL2)"] as const;
+const osTabs = ["Linux", "macOS"] as const;
 
 export function QuickStart() {
   const t = useTranslations("quickStart");

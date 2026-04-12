@@ -32,8 +32,9 @@ export function Features() {
   return (
     <section id="features" className="py-24">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="mb-12 text-center text-3xl font-bold text-foreground md:text-4xl">
-          {t("title")}
+        <h2 className="mb-16 text-center font-mono text-3xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl text-glow-cyan">
+          <span className="text-accent">{">"}</span> {t("title")}
+          <span className="ml-2 animate-pulse text-accent">_</span>
         </h2>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -41,14 +42,19 @@ export function Features() {
             const Icon = feature.icon;
             return (
               <ScrollReveal key={feature.key} delay={i * 0.1}>
-                <div className="rounded-xl border border-border bg-card p-6 transition-all hover:border-accent/50 hover:shadow-lg">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                <div className="group relative overflow-hidden rounded-none border border-white/10 bg-transparent p-8 transition-all duration-300 hover:border-accent hover:bg-white/[0.02] border-hud">
+
+                  {/* Decorative glowing corners */}
+                  <div className="absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center border border-white/10 bg-transparent text-accent transition-colors duration-300 group-hover:border-accent group-hover:bg-accent/10 group-hover:text-glow-cyan">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="mb-2 text-lg font-semibold text-foreground">
+                  <h3 className="mb-3 font-mono text-sm font-semibold uppercase tracking-widest text-white transition-colors duration-300 group-hover:text-glow-cyan">
                     {t(`${feature.key}.title`)}
                   </h3>
-                  <p className="text-sm leading-relaxed text-muted">
+                  <p className="font-mono text-sm leading-relaxed text-muted transition-colors duration-300 group-hover:text-white/80">
                     {t(`${feature.key}.description`)}
                   </p>
                 </div>
