@@ -42,8 +42,10 @@ export function LanguageSwitcher() {
 
     // Add new locale prefix (en uses no prefix)
     const newPath = newLocale === "en" ? path : `/${newLocale}${path}`;
-    router.push(newPath);
-    setOpen(false);
+    // Set the locale cookie so middleware doesn't redirect back
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
+    // Full navigation to ensure middleware processes correctly
+    window.location.href = newPath;
   }
 
   return (
