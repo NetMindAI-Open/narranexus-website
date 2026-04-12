@@ -58,10 +58,11 @@ export function Roadmap() {
     <section id="roadmap" className="py-24">
       <div className="mx-auto max-w-4xl px-6">
         <ScrollReveal>
-          <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
-            {t("title")}
+          <h2 className="mb-4 text-center font-mono text-3xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl text-glow-cyan">
+            <span className="text-accent">{">"}</span> {t("title")}
+            <span className="ml-2 animate-pulse text-accent">_</span>
           </h2>
-          <p className="mx-auto mb-16 max-w-xl text-center text-muted">
+          <p className="mx-auto mb-16 max-w-xl text-center font-mono text-muted tracking-wide">
             {t("description")}
           </p>
         </ScrollReveal>
@@ -86,33 +87,35 @@ export function Roadmap() {
             >
               {/* Dot */}
               <div
-                className={`absolute left-2.5 top-1 h-3 w-3 rounded-full border-2 md:top-1 ${
+                className={`absolute left-2.5 top-1 h-3 w-3 rounded-none border-2 md:top-1 ${
                   i % 2 === 0
                     ? "md:left-auto md:right-[-6.5px]"
                     : "md:left-[-6.5px]"
                 } ${
                   ms.released
-                    ? "border-accent bg-accent"
+                    ? "border-accent bg-accent shadow-[0_0_10px_rgba(0,163,255,0.8)]"
                     : "border-accent bg-background"
                 }`}
               />
 
-              <span className="mb-1 inline-block rounded-full bg-accent/10 px-3 py-0.5 text-xs font-semibold text-accent">
-                {ms.version}
+              <span className="mb-1 inline-block rounded-none border border-accent/30 bg-accent/10 px-3 py-0.5 font-mono text-xs font-semibold text-accent text-glow-cyan">
+                [{ms.version}]
               </span>
-              <span className="ml-2 text-xs text-muted">{ms.date}</span>
+              <span className="ml-2 font-mono text-xs text-muted">{ms.date}</span>
 
-              <h3 className="mt-2 text-lg font-semibold text-foreground">
+              <h3 className="mt-2 font-mono text-lg font-semibold uppercase text-white transition-colors hover:text-glow-cyan">
                 {ms.title}
               </h3>
 
               <ul
-                className={`mt-2 space-y-1 text-sm text-muted ${
+                className={`mt-2 space-y-1 font-mono text-sm text-muted ${
                   i % 2 === 0 ? "md:text-right" : ""
                 }`}
               >
                 {ms.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item} className="transition-colors hover:text-white/80">
+                    <span className="text-accent/50 mr-2">-</span>{item}
+                  </li>
                 ))}
               </ul>
             </motion.div>
