@@ -31,23 +31,23 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "backdrop-blur-md bg-background/80 border-b border-border"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        ? "backdrop-blur-md bg-background/80 border-b border-border"
+        : "bg-transparent"
+        }`}
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/images/logo.png"
             alt="NarraNexus"
-            width={36}
-            height={36}
-            className="rounded"
+            width={691}
+            height={1024}
+            className="h-12 w-auto rounded object-contain"
+            priority
           />
-          <span className="text-xl font-bold tracking-tight">NarraNexus</span>
+          <span className="text-lg font-bold tracking-tight">NarraNexus</span>
         </Link>
 
         {/* Center: Nav links (desktop) */}
