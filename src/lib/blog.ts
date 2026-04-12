@@ -3,8 +3,6 @@ import path from "path";
 import matter from "gray-matter";
 import { compileMDX } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const contentDir = path.join(process.cwd(), "content/blog");
 
@@ -81,7 +79,6 @@ export async function getPostBySlug(
     options: {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
       },
       parseFrontmatter: false,
     },

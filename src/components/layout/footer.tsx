@@ -17,8 +17,8 @@ const columns = [
     titleKey: "docs",
     links: [
       { label: "Quick Start", href: "/docs/getting-started/quick-start" },
-      { label: "Architecture", href: "/docs/getting-started/architecture" },
-      { label: "API Reference", href: "/docs/api/overview" },
+      { label: "Architecture", href: "/docs/core-concepts/architecture" },
+      { label: "API Reference", href: "/docs/api-reference/rest-api" },
     ],
   },
   {

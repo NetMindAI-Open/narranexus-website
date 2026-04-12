@@ -1,9 +1,50 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
-import { getPostBySlug } from "@/lib/blog";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { compileMDX } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+
+async function getPost(locale: string, slug: string) {
+  const contentDir = path.join(process.cwd(), "content/blog");
+  const localePath = path.join(contentDir, locale, `${slug}.mdx`);
+  const fallbackPath = path.join(contentDir, "en", `${slug}.mdx`);
+
+  let filePath: string;
+  if (fs.existsSync(localePath)) {
+    filePath = localePath;
+  } else if (fs.existsSync(fallbackPath)) {
+    filePath = fallbackPath;
+  } else {
+    return null;
+  }
+
+  const source = fs.readFileSync(filePath, "utf-8");
+  const { content: rawContent, data } = matter(source);
+  const wordCount = rawContent.split(/\s+/).filter(Boolean).length;
+  const readTime = Math.max(1, Math.ceil(wordCount / 200));
+
+  const { content } = await compileMDX({
+    source: rawContent,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+      parseFrontmatter: false,
+    },
+  });
+
+  return {
+    title: (data.title as string) || slug,
+    date: (data.date as string) || "",
+    readTime,
+    content,
+  };
+}
 
 export default async function BlogPostPage({
   params,
@@ -14,7 +55,7 @@ export default async function BlogPostPage({
   setRequestLocale(locale);
 
   const t = await getTranslations("blog");
-  const post = await getPostBySlug(locale, slug);
+  const post = await getPost(locale, slug);
 
   if (!post) {
     notFound();
