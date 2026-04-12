@@ -60,7 +60,7 @@ export function DemoShowcase() {
                 src={current.src}
                 alt={t(current.labelKey)}
                 fill
-                className="object-cover"
+                className="object-contain"
                 unoptimized={current.src.endsWith(".gif")}
                 onError={() =>
                   setImgError((prev) => ({ ...prev, [current.id]: true }))
