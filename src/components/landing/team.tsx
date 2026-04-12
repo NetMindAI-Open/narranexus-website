@@ -10,11 +10,6 @@ const orgs = [
     url: "https://www.netmind.ai/",
     description: "AI research and product company.",
   },
-  {
-    name: "johnsonice",
-    url: "https://github.com/johnsonice",
-    description: "Open-source community on GitHub.",
-  },
 ];
 
 export function Team() {
