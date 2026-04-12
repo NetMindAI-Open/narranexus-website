@@ -43,10 +43,10 @@ export default async function Home({
   return (
     <>
       <Hero />
+      <QuickStart />
       <Features />
       <Architecture />
       <DemoShowcase />
-      <QuickStart />
       <Testimonials />
       <Roadmap />
       <Team />
