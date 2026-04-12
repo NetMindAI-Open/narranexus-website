@@ -45,7 +45,9 @@
     "title": "Get Started in Seconds",
     "description": "One command to install and run. NarraNexus handles the rest.",
     "copy": "Copy",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "macDownload": "Download the NarraNexus desktop app for macOS — one-click install, auto-updates included.",
+    "downloadDmg": "Download for macOS"
   },
   "integrations": {
     "title": "Works With Everything",
@@ -119,6 +121,8 @@
   },
   "common": {
     "copy": "Copy",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "macDownload": "Download the NarraNexus desktop app for macOS — one-click install, auto-updates included.",
+    "downloadDmg": "Download for macOS"
   }
 }

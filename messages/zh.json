@@ -45,7 +45,9 @@
     "title": "数秒内开始",
     "description": "一条命令安装运行。NarraNexus 处理其余一切。",
     "copy": "复制",
-    "copied": "已复制！"
+    "copied": "已复制！",
+    "macDownload": "下载 NarraNexus macOS 桌面应用 — 一键安装，自动更新。",
+    "downloadDmg": "下载 macOS 版本"
   },
   "integrations": {
     "title": "兼容一切",
