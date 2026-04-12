@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import { LanguageSwitcher } from "./language-switcher";
@@ -38,8 +39,15 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
-        <Link href="/" className="text-xl font-bold tracking-tight">
-          NarraNexus
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/images/logo.png"
+            alt="NarraNexus"
+            width={36}
+            height={36}
+            className="rounded"
+          />
+          <span className="text-xl font-bold tracking-tight">NarraNexus</span>
         </Link>
 
         {/* Center: Nav links (desktop) */}
