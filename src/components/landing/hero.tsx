@@ -52,7 +52,7 @@ export function Hero() {
           </Link>
 
           <a
-            href="https://github.com/johnsonice/narranexus-website"
+            href="https://github.com/NetMindAI-Open/NarraNexus"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 rounded-full border border-white/20 bg-transparent px-8 py-3 text-white/80 transition-all duration-300 hover:border-white/50 hover:text-white"

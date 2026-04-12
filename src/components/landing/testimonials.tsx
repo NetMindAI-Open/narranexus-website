@@ -17,7 +17,7 @@ export function Testimonials() {
 
           <div className="rounded-xl border border-border bg-card p-8">
             <a
-              href="https://github.com/johnsonice/narranexus-website"
+              href="https://github.com/NetMindAI-Open/NarraNexus"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-accent transition-colors hover:brightness-110"

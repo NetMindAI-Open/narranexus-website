@@ -28,7 +28,7 @@ export function CTA() {
             </a>
 
             <a
-              href="https://github.com/johnsonice/narranexus-website"
+              href="https://github.com/NetMindAI-Open/NarraNexus"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-semibold text-foreground transition-colors hover:border-accent/50 hover:text-accent"

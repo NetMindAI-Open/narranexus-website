@@ -7,10 +7,10 @@ import { CopyButton } from "@/components/ui/copy-button";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const command =
-  "git clone https://github.com/johnsonice/narranexus-website.git && cd NarraNexus && bash run.sh";
+  "git clone https://github.com/NetMindAI-Open/NarraNexus.git && cd NarraNexus && bash run.sh";
 
 const DMG_URL =
-  "https://github.com/johnsonice/narranexus-website/releases/latest/download/NarraNexus-1.0.9-universal.dmg";
+  "https://github.com/NetMindAI-Open/NarraNexus/releases/latest/download/NarraNexus-1.0.9-universal.dmg";
 
 const osTabs = ["Linux", "macOS"] as const;
 

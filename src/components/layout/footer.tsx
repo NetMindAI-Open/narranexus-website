@@ -26,17 +26,17 @@ const columns = [
     links: [
       {
         label: "GitHub",
-        href: "https://github.com/johnsonice/narranexus-website",
+        href: "https://github.com/NetMindAI-Open/NarraNexus",
         external: true,
       },
       {
         label: "Discussions",
-        href: "https://github.com/johnsonice/narranexus-website/discussions",
+        href: "https://github.com/NetMindAI-Open/NarraNexus/discussions",
         external: true,
       },
       {
         label: "Issues",
-        href: "https://github.com/johnsonice/narranexus-website/issues",
+        href: "https://github.com/NetMindAI-Open/NarraNexus/issues",
         external: true,
       },
     ],

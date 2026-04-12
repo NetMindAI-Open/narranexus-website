@@ -42,7 +42,7 @@ export function MobileNav() {
           ))}
 
           <a
-            href="https://github.com/johnsonice/narranexus-website"
+            href="https://github.com/NetMindAI-Open/NarraNexus"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
