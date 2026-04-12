@@ -63,7 +63,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-mono tracking-tight antialiased bg-grid-cyan`}
       >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

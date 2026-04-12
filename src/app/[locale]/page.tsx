@@ -5,7 +5,7 @@ import { Features } from "@/components/landing/features";
 import { Architecture } from "@/components/landing/architecture";
 import { DemoShowcase } from "@/components/landing/demo-showcase";
 import { QuickStart } from "@/components/landing/quick-start";
-import { Integrations } from "@/components/landing/integrations";
+
 import { Testimonials } from "@/components/landing/testimonials";
 import { Roadmap } from "@/components/landing/roadmap";
 import { Team } from "@/components/landing/team";
@@ -47,7 +47,6 @@ export default async function Home({
       <Architecture />
       <DemoShowcase />
       <QuickStart />
-      <Integrations />
       <Testimonials />
       <Roadmap />
       <Team />
