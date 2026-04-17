@@ -35,7 +35,7 @@ export function MobileNav() {
               key={link.key}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-lg py-3 border-b border-border text-foreground hover:text-accent"
+              className="text-lg py-3 border-b border-border/30 font-mono tracking-wide text-muted hover:text-glow-cyan hover:text-accent transition-colors"
             >
               {t(link.key)}
             </Link>
@@ -46,7 +46,7 @@ export function MobileNav() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="text-lg py-3 border-b border-border text-foreground hover:text-accent flex items-center gap-2"
+            className="text-lg py-3 border-b border-border/30 font-mono tracking-wide text-muted hover:text-glow-cyan hover:text-accent transition-colors flex items-center gap-2"
           >
             {t("github")}
             <ExternalLink className="h-4 w-4" />
@@ -60,10 +60,10 @@ export function MobileNav() {
           <Link
             href="/docs/getting-started/quick-start"
             onClick={() => setOpen(false)}
-            className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-3 text-white font-medium hover:opacity-90"
+            className="mt-4 group font-mono flex items-center justify-center gap-2 rounded-full border border-white/20 bg-transparent px-5 py-3 text-white transition-all duration-300 hover:border-accent hover:bg-accent/10 hover:text-glow-cyan"
           >
             {t("getStarted")}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 text-accent" />
           </Link>
         </div>
       )}

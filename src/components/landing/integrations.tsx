@@ -38,10 +38,11 @@ export function Integrations() {
     <section className="py-24">
       <div className="mx-auto max-w-6xl px-6">
         <ScrollReveal>
-          <h2 className="mb-4 text-center text-3xl font-bold text-foreground md:text-4xl">
-            {t("title")}
+          <h2 className="mb-4 text-center font-mono text-3xl font-bold uppercase tracking-[0.2em] text-white md:text-4xl text-glow-cyan">
+            <span className="text-accent">{">"}</span> {t("title")}
+            <span className="ml-2 animate-pulse text-accent">_</span>
           </h2>
-          <p className="mx-auto mb-12 max-w-2xl text-center text-muted">
+          <p className="mx-auto mb-12 max-w-2xl text-center font-mono text-muted tracking-wide">
             {t("description")}
           </p>
         </ScrollReveal>
@@ -51,17 +52,20 @@ export function Integrations() {
             {integrations.map((item) => (
               <div
                 key={item.name}
-                className="flex flex-col items-center gap-2 rounded-lg border border-border bg-card p-4 transition-colors hover:border-accent/50"
+                className="group relative flex flex-col items-center gap-2 rounded-none border border-white/10 bg-transparent p-4 transition-all hover:border-accent hover:bg-white/[0.02]"
               >
-                <span className="text-sm font-semibold text-foreground">
+                <div className="absolute left-0 top-0 h-2 w-2 border-l border-t border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-0 right-0 h-2 w-2 border-b border-r border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                
+                <span className="text-sm font-semibold font-mono uppercase text-white transition-colors group-hover:text-glow-cyan">
                   {item.name}
                 </span>
                 <span
-                  className={`rounded-full px-2 py-0.5 text-xs font-medium ${
+                  className={`rounded-none px-2 py-0.5 font-mono text-[10px] tracking-widest ${
                     categoryColors[item.category]
                   }`}
                 >
-                  {item.category}
+                  [{item.category}]
                 </span>
               </div>
             ))}

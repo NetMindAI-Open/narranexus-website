@@ -9,7 +9,7 @@ import { QuickStart } from "@/components/landing/quick-start";
 import { Testimonials } from "@/components/landing/testimonials";
 import { Roadmap } from "@/components/landing/roadmap";
 import { Team } from "@/components/landing/team";
-import { CTA } from "@/components/landing/cta";
+
 
 export const metadata: Metadata = {
   title: "NarraNexus - Multi-Agent Framework | Intelligence Through Connection",
@@ -43,14 +43,13 @@ export default async function Home({
   return (
     <>
       <Hero />
+      <QuickStart />
       <Features />
       <Architecture />
       <DemoShowcase />
-      <QuickStart />
       <Testimonials />
       <Roadmap />
       <Team />
-      <CTA />
     </>
   );
 }

@@ -42,7 +42,7 @@ export function Features() {
             const Icon = feature.icon;
             return (
               <ScrollReveal key={feature.key} delay={i * 0.1}>
-                <div className="group relative overflow-hidden rounded-none border border-white/10 bg-transparent p-8 transition-all duration-300 hover:border-accent hover:bg-white/[0.02] border-hud">
+                <div className="group relative h-full overflow-hidden rounded-none border border-white/10 bg-transparent p-8 transition-all duration-300 hover:border-accent hover:bg-white/[0.02] border-hud">
 
                   {/* Decorative glowing corners */}
                   <div className="absolute left-0 top-0 h-4 w-4 border-l-2 border-t-2 border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

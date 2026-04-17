@@ -38,16 +38,14 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/images/logo.png"
+        <Link href="/" className="flex items-center gap-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logo.svg"
             alt="NarraNexus"
-            width={691}
-            height={1024}
-            className="h-12 w-auto rounded object-contain"
-            priority
+            className="h-10 w-auto rounded"
           />
-          <span className="text-lg font-bold tracking-tight">NarraNexus</span>
+          <span className="text-xl font-bold tracking-tight">NarraNexus</span>
         </Link>
 
         {/* Center: Nav links (desktop) */}
@@ -56,7 +54,7 @@ export function Navbar() {
             <Link
               key={link.key}
               href={link.href}
-              className="text-sm text-muted hover:text-foreground transition-colors"
+              className="text-sm font-mono tracking-wide text-muted hover:text-glow-cyan hover:text-accent transition-colors"
             >
               {t(link.key)}
             </Link>
@@ -65,7 +63,7 @@ export function Navbar() {
             href="https://github.com/NetMindAI-Open/NarraNexus"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-muted hover:text-foreground transition-colors flex items-center gap-1"
+            className="text-sm font-mono tracking-wide text-muted hover:text-glow-cyan hover:text-accent transition-colors flex items-center gap-1"
           >
             {t("github")}
             <ExternalLink className="h-3.5 w-3.5" />
@@ -78,10 +76,10 @@ export function Navbar() {
           <ThemeToggle />
           <Link
             href="/docs/getting-started/quick-start"
-            className="flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white hover:opacity-90 transition-opacity"
+            className="group font-mono flex items-center gap-1.5 rounded-full border border-white/20 bg-transparent px-4 py-2 text-sm text-white transition-all duration-300 hover:border-accent hover:bg-accent/10 hover:text-glow-cyan"
           >
             {t("getStarted")}
-            <ArrowRight className="h-3.5 w-3.5" />
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 text-accent" />
           </Link>
         </div>
 

@@ -42,7 +42,7 @@
     }
   },
   "quickStart": {
-    "title": "Get Started in Seconds",
+    "title": "Quick Start",
     "description": "One command to install and run. NarraNexus handles the rest.",
     "copy": "Copy",
     "copied": "Copied!",
@@ -62,7 +62,7 @@
   },
   "team": {
     "title": "Built by",
-    "description": "An open-source project by Protagolabs and the NetMindAI community.",
+    "description": "An open-source project by NetMind and the NetMindAI community.",
     "license": "Licensed under CC BY-NC 4.0"
   },
   "cta": {
@@ -76,7 +76,7 @@
     "docs": "Docs",
     "community": "Community",
     "organization": "Organization",
-    "copyright": "© {year} Protagolabs, Inc. All rights reserved."
+    "copyright": "© {year} NetMind All rights reserved."
   },
   "docs": {
     "search": "Search docs...",
