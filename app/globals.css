@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* NetMind Design Tokens */
+  --color-paper: #e8eaed;
+  --color-paper-2: #dde0e4;
+  --color-paper-3: #d2d5da;
+  --color-ink: #111214;
+  --color-muted: #60656f;
+  --color-rule: rgba(17, 18, 20, 0.1);
+  --color-accent: #111214;
+
+  /* Typography — set via next/font CSS variables in layout.tsx */
+  --font-heading: var(--font-syne), sans-serif;
+  --font-body: var(--font-barlow), sans-serif;
+  --font-mono: var(--font-dm-mono), monospace;
+}
+
+/* Base styles */
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 72px grid background texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(17, 18, 20, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 18, 20, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Global: no border-radius anywhere */
+* {
+  border-radius: 0 !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+/* Code / mono */
+code, pre, kbd {
+  font-family: var(--font-mono);
+}
+
+/* Horizontal rules */
+hr {
+  border-color: var(--color-rule);
+}
+
+/* Links in docs */
+.docs-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: var(--color-ink);
+}
+.docs-content a:hover {
+  color: var(--color-muted);
+}
