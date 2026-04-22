@@ -240,7 +240,7 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-4">
           <a
-            href="http://13.40.48.129"
+            href="https://agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
@@ -549,7 +549,7 @@ export default function Home() {
               start chatting with your agent immediately.
             </p>
             <a
-              href="http://13.40.48.129"
+              href="https://agent.narra.nexus"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-4 py-1.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"

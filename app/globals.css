@@ -3,8 +3,8 @@
 @theme inline {
   /* NetMind Design Tokens */
   --color-paper: #e8eaed;
-  --color-paper-2: #dde0e4;
-  --color-paper-3: #d2d5da;
+  --color-paper-2: #e2e4e8;
+  --color-paper-3: #d8dbe0;
   --color-ink: #111214;
   --color-muted: #60656f;
   --color-rule: rgba(17, 18, 20, 0.1);
@@ -36,6 +36,12 @@ body::before {
     linear-gradient(rgba(17, 18, 20, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(17, 18, 20, 0.04) 1px, transparent 1px);
   background-size: 72px 72px;
+}
+
+/* All content above the grid texture */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Global: no border-radius anywhere */

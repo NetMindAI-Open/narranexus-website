@@ -230,7 +230,7 @@ function CloudMode() {
         </p>
         <div className="border border-rule bg-paper-2/30 p-4">
           <code className="font-mono text-sm text-ink">
-            http://13.40.48.129
+            https://agent.narra.nexus
           </code>
         </div>
       </section>

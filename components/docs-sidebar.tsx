@@ -144,7 +144,7 @@ export function DocsSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 shrink-0 border-r border-rule overflow-y-auto py-8 pr-6">
+    <aside className="w-[288px] shrink-0 border-r border-rule overflow-y-auto py-8 pr-6">
       <nav className="space-y-6">
         {docsNav.map((section) => (
           <div key={section.title}>
