@@ -33,9 +33,9 @@ const capabilities = [
     link: "/docs/core-concepts/narrative",
   },
   {
-    title: "Social Graph",
-    subtitle: "Agents that know people",
-    desc: "Identity, expertise, contact details, and communication personas \u2014 all learned from conversations and updated continuously. The agent remembers who prefers bullet points, who needs formal reports, and who hasn\u2019t been contacted in a while.",
+    title: "Social Awareness",
+    subtitle: "Agents that build relationships",
+    desc: "Your agent tracks every person, team, and agent it encounters \u2014 their roles, expertise, preferences, and history. Follow up on leads, manage stakeholder relationships, coordinate across agents, and never lose context on who\u2019s involved in what.",
     link: "/docs/modules/social-network",
   },
   {
@@ -170,39 +170,41 @@ const personas = [
 
 const roadmap = [
   {
-    version: "v0.1.0",
-    date: "2026-02",
+    version: "v1.0",
+    date: "2026-03",
     title: "Foundation",
     done: true,
     items: [
-      "Core agent runtime",
-      "Matrix protocol integration",
-      "Basic memory system",
-      "Docker deployment",
+      "Core agent runtime with 7-step pipeline",
+      "Narrative memory engine",
+      "Module system with hot-pluggable capabilities",
+      "Built in MCP tools",
+      "Multi-LLM provider support",
     ],
   },
   {
-    version: "v0.2.0",
+    version: "v1.0.5",
     date: "2026-03",
-    title: "Intelligence Layer",
+    title: "Desktop & Cloud",
     done: true,
     items: [
-      "Narrative memory engine",
-      "Multi-LLM support",
-      "Skill marketplace",
-      "Cost tracking dashboard",
+      "macOS desktop app with bundled runtime",
+      "Cloud deployment with multi-tenant auth",
+      "Agent-to-agent communication (DM & group chat)",
+      "Skill system & ClawHub marketplace integration",
+      "Dashboard v2 with job tracking & cost monitoring",
     ],
   },
   {
-    version: "v0.3.0",
+    version: "v1.1",
     date: "2026 Q2",
-    title: "Scale & Connect",
+    title: "Scale & Integrate",
     done: false,
     items: [
-      "MCP server integration",
-      "Agent-to-agent workflows",
-      "Advanced RAG pipeline",
+      "Docker Compose one-command deployment",
+      "IM platform integrations (Telegram, Lark)",
       "Community plugin system",
+      "Multimodal interaction support"
     ],
   },
 ];
@@ -569,9 +571,12 @@ export default function Home() {
               Download the macOS app. Bundled Python, auto-starts all services.
               No terminal required.
             </p>
-            <span className="font-mono text-xs text-muted">
+            <a
+              href="https://github.com/NetMindAI-Open/NarraNexus/releases/download/v1.0.9/NarraNexus-1.0.9-universal.dmg"
+              className="font-mono text-xs text-ink underline"
+            >
               Download (macOS) &rarr;
-            </span>
+            </a>
           </div>
 
           {/* Local */}
@@ -590,7 +595,7 @@ export default function Home() {
             </p>
             <div className="border border-rule bg-paper-2/30 p-3">
               <code className="font-mono text-xs text-ink break-all">
-                git clone ...NarraNexus && bash run.sh
+                git clone https://github.com/NetMindAI-Open/NarraNexus.git && bash run.sh
               </code>
             </div>
           </div>
