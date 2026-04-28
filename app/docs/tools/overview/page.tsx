@@ -10,7 +10,7 @@ export default function ToolsOverviewPage() {
         </span>
       </div>
 
-      <h1 className="font-heading text-4xl font-800 leading-tight mb-4">
+      <h1 className="font-heading text-4xl font-700 leading-tight mb-4">
         What Your Agent Can Do
       </h1>
       <p className="text-lg font-body font-300 text-muted mb-8 max-w-2xl">

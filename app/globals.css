@@ -1,28 +1,62 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* NetMind Design Tokens */
+  /* ── Color tokens — NetMind paper/ink system ────────────────── */
   --color-paper: #e8eaed;
-  --color-paper-2: #e2e4e8;
-  --color-paper-3: #d8dbe0;
+  --color-paper-2: #dde0e4;   /* matches target: --paper2 */
+  --color-paper-3: #d2d5da;   /* matches target: --paper3 */
   --color-ink: #111214;
   --color-muted: #60656f;
+  --color-muted-2: #3d4149;   /* darker secondary text, matches target --muted2 */
   --color-rule: rgba(17, 18, 20, 0.1);
+  --color-rule-2: rgba(17, 18, 20, 0.06);
   --color-accent: #111214;
+  --color-secondary: #334dff;
 
-  /* Typography — set via next/font CSS variables in layout.tsx */
-  --font-heading: var(--font-syne), sans-serif;
-  --font-body: var(--font-barlow), sans-serif;
-  --font-mono: var(--font-dm-mono), monospace;
+  /* ── Typography tokens — matches internal.netmind.foundation ── */
+  /* Display: Space Grotesk */
+  --font-display: var(--font-space-grotesk), "Inter", "Barlow", system-ui, sans-serif;
+  /* Body: Inter primary, Barlow fallback, CJK fallbacks */
+  --font-sans: var(--font-inter), var(--font-barlow), -apple-system, "PingFang SC",
+    "Microsoft YaHei", system-ui, sans-serif;
+  /* Mono: DM Mono */
+  --font-mono: var(--font-dm-mono), "JetBrains Mono", ui-monospace,
+    SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  /* Legacy aliases — existing `font-heading` / `font-body` classes keep working */
+  --font-heading: var(--font-display);
+  --font-body: var(--font-sans);
 }
 
-/* Base styles */
+/* ── Smooth scroll + reduced-motion ─────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
+  font-size: 15px;
   font-weight: 300;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* 72px grid background texture */
@@ -38,7 +72,6 @@ body::before {
   background-size: 72px 72px;
 }
 
-/* All content above the grid texture */
 body > * {
   position: relative;
   z-index: 1;
@@ -49,28 +82,73 @@ body > * {
   border-radius: 0 !important;
 }
 
-/* Headings */
+/* ── Headings — Space Grotesk, absolute-px letter-spacing ───── */
+/* Matches target site: h1 globally scaled; h2–h6 inherit and are
+   styled per-component (Tailwind text-* + tracking-tight). */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--color-ink);
+  text-wrap: balance;
 }
 
-/* Code / mono */
+h1 {
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+/* ── Paragraphs ─────────────────────────────────────────────── */
+p {
+  text-wrap: pretty;
+}
+
+/* ── Code / mono ────────────────────────────────────────────── */
 code, pre, kbd {
   font-family: var(--font-mono);
 }
 
-/* Horizontal rules */
+/* ── Horizontal rules ───────────────────────────────────────── */
 hr {
   border-color: var(--color-rule);
 }
 
-/* Links in docs */
+/* ── Focus ring ─────────────────────────────────────────────── */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* ── Selection ──────────────────────────────────────────────── */
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* ── Form inputs — target site uses Inter, sans-serif ────────── */
+input, textarea, select, button {
+  font-family: var(--font-sans);
+}
+
+/* ── Utilities ──────────────────────────────────────────────── */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Docs content links ─────────────────────────────────────── */
 .docs-content a {
   text-decoration: underline;
   text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
   color: var(--color-ink);
+  transition: color 150ms ease-out;
 }
 .docs-content a:hover {
   color: var(--color-muted);
