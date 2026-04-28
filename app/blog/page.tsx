@@ -12,19 +12,24 @@ const posts = [
 
 export default function BlogIndex() {
   return (
-    <div className="max-w-[1400px] mx-auto px-6 py-20">
+    <div className="max-w-[1400px] mx-auto px-6 py-16 md:py-20">
       <div className="flex items-center gap-3 mb-6">
-        <span className="w-8 h-px bg-ink block" />
+        <span className="w-8 h-px bg-ink block" aria-hidden="true" />
         <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
           NarraNexus &middot; Blog
         </span>
       </div>
 
-      <h1 className="font-heading text-4xl font-800 mb-12">Blog</h1>
+      <h1 className="font-heading text-3xl sm:text-4xl font-700 leading-tight tracking-tight mb-3">
+        Blog
+      </h1>
+      <p className="font-body font-300 text-muted mb-10 md:mb-12 max-w-2xl">
+        Release notes, architecture deep-dives, and updates from the NarraNexus team.
+      </p>
 
-      <div className="space-y-8">
+      <div className="space-y-8 max-w-2xl">
         {posts.map((post) => (
-          <article key={post.slug} className="border-b border-rule pb-8">
+          <article key={post.slug} className="border-b border-rule pb-8 last:border-b-0">
             <span className="font-mono text-xs text-muted">{post.date}</span>
             <h2 className="font-heading text-2xl font-700 mt-1 mb-2">
               <Link
@@ -34,7 +39,15 @@ export default function BlogIndex() {
                 {post.title}
               </Link>
             </h2>
-            <p className="font-body font-300 text-muted">{post.summary}</p>
+            <p className="font-body font-300 text-muted leading-relaxed mb-3">
+              {post.summary}
+            </p>
+            <Link
+              href={`/blog/${post.slug}`}
+              className="font-mono text-xs text-ink hover:text-muted transition-colors"
+            >
+              Read more &rarr;
+            </Link>
           </article>
         ))}
       </div>

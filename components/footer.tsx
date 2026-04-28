@@ -1,11 +1,23 @@
 import Link from "next/link";
 
-const footerSections = [
+interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+const footerSections: FooterSection[] = [
   {
     title: "Product",
     links: [
       { label: "Features", href: "/#features" },
       { label: "Roadmap", href: "/#roadmap" },
+      { label: "Blog", href: "/blog" },
     ],
   },
   {
@@ -19,25 +31,27 @@ const footerSections = [
   {
     title: "Community",
     links: [
-      { label: "GitHub", href: "https://github.com/NetMindAI-Open/NarraNexus" },
-      { label: "Discussions", href: "https://github.com/NetMindAI-Open/NarraNexus/discussions" },
-      { label: "Issues", href: "https://github.com/NetMindAI-Open/NarraNexus/issues" },
+      { label: "GitHub", href: "https://github.com/NetMindAI-Open/NarraNexus", external: true },
+      { label: "Discussions", href: "https://github.com/NetMindAI-Open/NarraNexus/discussions", external: true },
+      { label: "Issues", href: "https://github.com/NetMindAI-Open/NarraNexus/issues", external: true },
     ],
   },
   {
     title: "Organization",
     links: [
-      { label: "NetMind", href: "https://netmind.ai" },
-      { label: "NetMind.AI", href: "https://netmind.ai" },
+      { label: "NetMind.AI", href: "https://netmind.ai", external: true },
+      { label: "Try Online", href: "https://agent.narra.nexus", external: true },
     ],
   },
 ];
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="border-t border-rule bg-paper">
       <div className="max-w-[1400px] mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8">
           {footerSections.map((section) => (
             <div key={section.title}>
               <h4 className="font-mono text-xs font-400 uppercase tracking-widest text-muted mb-4">
@@ -48,6 +62,8 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
                       className="text-sm font-body font-300 text-muted hover:text-ink transition-colors"
                     >
                       {link.label}
@@ -58,12 +74,13 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-6 border-t border-rule">
+
+        <div className="mt-12 pt-6 border-t border-rule flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="font-mono text-xs text-muted">
-            &copy; 2026 NetMind. All rights reserved. &middot; CC BY-NC 4.0
+            &copy; {year} NetMind &middot; CC BY-NC 4.0
           </p>
-          <p className="font-mono text-xs text-muted mt-1">
-            An open-source project by NetMind and the NetMindAI community.
+          <p className="font-mono text-xs text-muted">
+            An open-source project by NetMind and the NarraNexus community.
           </p>
         </div>
       </div>
