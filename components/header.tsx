@@ -45,15 +45,15 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center -ml-1" aria-label="NarraNexus home">
           <Image
-            src="/images/logo-light-mode.svg"
+            src="/images/logo-light-mode.png"
             alt=""
-            width={50}
-            height={32}
+            width={1360}
+            height={840}
             className="block h-8 w-auto mr-0.5"
             priority
           />
           <span
-            className="font-sans text-[18px] leading-none text-ink"
+            className="font-sans text-[16px] leading-none text-ink"
             style={{
               fontWeight: 520,
               letterSpacing: "-0.01em",
