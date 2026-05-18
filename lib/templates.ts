@@ -116,6 +116,42 @@ export const TEMPLATES: Template[] = [
     created_at: "2026-05-15",
     updated_at: "2026-05-15",
   },
+  {
+    slug: "kol-assistant",
+    name: "KOL Assistant",
+    short_description:
+      "A 4-agent team for content creators: parse inbound sponsor emails, manage CRM, monitor brand mentions across social platforms, and orchestrate the sponsorship pipeline.",
+    long_description:
+      "KOL Assistant handles a creator's sponsorship pipeline end-to-end with four specialised agents.\n\nThe Email Intake Agent reads incoming sponsor inquiries from your inbox (Gmail) and parses out the offer terms. The Sponsorship CRM Agent tracks each sponsor as a record with relationship history and negotiation status. The Sponsorship Workflow Manager coordinates the moving pieces and emits structured HTML sponsor reports when a deal closes.\n\nReviewScout is the fourth and most operational agent: it monitors mentions of your name, brand, or product across X (Twitter), Reddit, Hacker News, Product Hunt, and Zhihu via the bundled bb-browser tooling, so you can track the conversation around your content without manually refreshing feeds. First-time use needs you to log in to each platform locally — sessions are cached on disk and only need refreshing when cookies expire.",
+    categories: ["sponsorship", "team"],
+    tags: ["kol", "creator", "sponsorship", "crm", "social-listening", "gmail", "multi-agent"],
+    bundle_url: "/templates/KOL_assistant-20260518.nxbundle",
+    bundle_size_bytes: 330104,
+    bundle_sha256:
+      "af9b06b9fd19ab1429597d0f274f6724fabd773aafefaf8b6691271e21cb252c",
+    author: { name: "NarraNexus team contributor" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.0",
+      narranexus_version_exported: "1.3.4",
+      agent_count: 4,
+      unique_skill_count: 7,
+      requires_external_mcp: false,
+      requires_credentials: [
+        "Maton AI API key (Email Intake — MATON_API_KEY)",
+        "Gmail account access (Email Intake)",
+        "Google Chrome installed locally + manual login to X / Reddit / Zhihu / LinkedIn / Product Hunt (ReviewScout)",
+      ],
+    },
+    agents: [
+      { name: "Sponsorship Workflow Manager", agent_id: "agent_f7b2d4417b0c" },
+      { name: "Email Intake Agent", agent_id: "agent_bd0cab20fab6" },
+      { name: "Sponsorship CRM Agent", agent_id: "agent_ae460d666546" },
+      { name: "ReviewScout", agent_id: "agent_145f25d42a9c" },
+    ],
+    created_at: "2026-05-18",
+    updated_at: "2026-05-18",
+  },
 ];
 
 export function getTemplate(slug: string): Template | undefined {
