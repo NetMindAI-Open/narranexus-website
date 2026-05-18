@@ -12,9 +12,13 @@
  *
  * Adding a new template (current workflow):
  *   1. cp my-template.nxbundle public/templates/
- *   2. add an entry below; mirror values from the bundle's manifest.json
- *      (unzip -p the-bundle.nxbundle manifest.json | jq)
- *   3. git add + commit + push → Vercel auto-deploys
+ *   2. compute file sha256:
+ *        shasum -a 256 public/templates/my-template.nxbundle
+ *      (this is the FILE hash — NOT the manifest's internal integrity_sha256)
+ *   3. peek the manifest for agent count / version / etc.:
+ *        unzip -p public/templates/my-template.nxbundle manifest.json | jq
+ *   4. add an entry below
+ *   5. git add + commit + push → Vercel auto-deploys
  */
 
 export interface TemplateAgent {
@@ -57,7 +61,13 @@ export interface Template {
    */
   bundle_url: string;
   bundle_size_bytes: number;
-  /** From the bundle's manifest.json integrity_sha256 field. */
+  /**
+   * sha256 of the .nxbundle file itself (NOT the manifest.json's internal
+   * `integrity_sha256` field — that one hashes pre-zip staged content and
+   * will not match what a download-then-hash check on the wire produces).
+   * Compute with: `shasum -a 256 path/to/file.nxbundle`.
+   * Verified by NarraNexus's POST /api/bundle/import/from-url after fetch.
+   */
   bundle_sha256: string;
 
   author: { name: string; url?: string };
@@ -84,7 +94,7 @@ export const TEMPLATES: Template[] = [
     bundle_url: "/templates/financial-briefing-team-20260515-0603.nxbundle",
     bundle_size_bytes: 865142,
     bundle_sha256:
-      "81226fb559d3019019a93382c5ba2503726c4820dd57ede138d23ff08d52ae83",
+      "e72097d906618c9c020e41df8d042b48d975da00bfb6aa0eae3c88840948796b",
     author: { name: "NarraNexus team" },
     license: "MIT",
     manifest_summary: {

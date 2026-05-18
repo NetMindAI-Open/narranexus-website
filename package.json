@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "npm run verify:templates",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "verify:templates": "tsx scripts/verify-templates.mts"
   },
   "dependencies": {
     "next": "16.2.4",
@@ -21,6 +23,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
+    "tsx": "^4.22.1",
     "typescript": "^5"
   }
 }

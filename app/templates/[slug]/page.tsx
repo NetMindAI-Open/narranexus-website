@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TEMPLATES, formatBytes, getTemplate } from "@/lib/templates";
+import { InstallChooser } from "./InstallButton";
 
 const eyebrow =
   "font-mono text-[11px] uppercase tracking-widest text-muted";
@@ -77,29 +78,10 @@ export default async function TemplateDetail({
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-3 mb-10">
-            <button
-              type="button"
-              disabled
-              title="Coming soon — Phase 2"
-              className="px-5 py-2.5 bg-muted/30 text-muted font-body text-sm font-400 border border-rule cursor-not-allowed"
-            >
-              Install in NarraNexus
-              <span className="ml-2 font-mono text-[9px] uppercase tracking-wider opacity-70">
-                soon
-              </span>
-            </button>
-            <a
-              href={t.bundle_url}
-              download
-              className="px-5 py-2.5 border border-ink text-ink font-body text-sm font-400 hover:bg-ink hover:text-paper transition-colors"
-            >
-              Download .nxbundle
-              <span className="ml-2 font-mono text-[10px] text-muted">
-                {formatBytes(t.bundle_size_bytes)}
-              </span>
-            </a>
-          </div>
+          <InstallChooser
+            bundleUrl={t.bundle_url}
+            sha256={t.bundle_sha256}
+          />
 
           {/* Long description */}
           <section className="mb-10">
