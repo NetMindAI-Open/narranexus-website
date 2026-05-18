@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Features", href: "/#features" },
+  { label: "Templates", href: "/templates" },
   { label: "Docs", href: "/docs/getting-started/quick-start" },
   { label: "Blog", href: "/blog" },
   { label: "Roadmap", href: "/#roadmap" },
@@ -36,6 +37,7 @@ export function Header() {
   const isNavActive = (href: string) => {
     if (href.startsWith("/docs") && isDocs) return true;
     if (href === "/blog" && pathname.startsWith("/blog")) return true;
+    if (href === "/templates" && pathname.startsWith("/templates")) return true;
     return false;
   };
 
