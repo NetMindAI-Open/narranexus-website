@@ -11,6 +11,7 @@ const navItems = [
   { label: "Docs", href: "/docs/getting-started/quick-start" },
   { label: "Blog", href: "/blog" },
   { label: "Roadmap", href: "/#roadmap" },
+  { label: "Request Access", href: "/invite" },
   {
     label: "GitHub",
     href: "https://github.com/NetMindAI-Open/NarraNexus",
@@ -38,6 +39,7 @@ export function Header() {
     if (href.startsWith("/docs") && isDocs) return true;
     if (href === "/blog" && pathname.startsWith("/blog")) return true;
     if (href === "/templates" && pathname.startsWith("/templates")) return true;
+    if (href === "/invite" && pathname.startsWith("/invite")) return true;
     return false;
   };
 
