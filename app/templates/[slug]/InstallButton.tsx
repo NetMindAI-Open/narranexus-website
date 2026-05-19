@@ -117,12 +117,18 @@ export function InstallChooser({ bundleUrl, sha256 }: Props) {
     remember(t);
     const bundleAbs = absoluteBundleUrl(bundleUrl);
 
-    if (t === "cloud") {
-      window.location.assign(buildHttpInstallUrl(CLOUD_APP_URL, bundleAbs, sha256));
-      return;
-    }
-    if (t === "local") {
-      window.location.assign(buildHttpInstallUrl(LOCAL_APP_URL, bundleAbs, sha256));
+    if (t === "cloud" || t === "local") {
+      const base = t === "cloud" ? CLOUD_APP_URL : LOCAL_APP_URL;
+      const url = buildHttpInstallUrl(base, bundleAbs, sha256);
+      // Open in a new tab so:
+      //  - the website stays put (visitor can come back to pick another
+      //    template / try a different target without re-navigating)
+      //  - the dropdown's open / preferred state isn't restored from
+      //    bfcache in a half-applied form when the user hits Back
+      //  - the new tab gets a fresh app session (logged-in cookie/JWT
+      //    carries over from same-origin localStorage on the cloud /
+      //    local NarraNexus origin)
+      window.open(url, "_blank", "noopener,noreferrer");
       return;
     }
     if (t === "desktop") {
@@ -148,6 +154,11 @@ export function InstallChooser({ bundleUrl, sha256 }: Props) {
         }
       }, APP_OPEN_PROBE_MS);
 
+      // narranexus:// is handled by the OS, not the browser navigator —
+      // window.location.assign here doesn't actually navigate the tab
+      // away (the browser can't render a custom scheme), so the current
+      // page stays put. Using window.open here instead would leave a
+      // blank tab around in some browsers; assign is the cleaner UX.
       window.location.assign(buildDeepLinkUrl(bundleAbs, sha256));
       return;
     }
