@@ -32,7 +32,7 @@ function LocalMode() {
         </h3>
         <div className="border border-rule bg-paper-2/30 p-4 mb-3">
           <pre className="font-mono text-sm text-ink leading-relaxed whitespace-pre-wrap">
-            {`git clone https://github.com/user/NarraNexus.git
+            {`git clone https://github.com/NetMindAI-Open/NarraNexus.git
 cd NarraNexus
 bash run.sh`}
           </pre>
@@ -46,7 +46,7 @@ bash run.sh`}
           <code className="font-mono text-xs px-1.5 py-0.5 bg-paper-2">tmux</code>
           . If any are missing it prints install instructions and exits. Once
           dependencies pass, it installs Python and frontend packages, then
-          launches a tmux session with all seven services:
+          launches a tmux session with all ten services:
         </p>
         <div className="mt-3 space-y-px bg-rule">
           {[
@@ -56,6 +56,9 @@ bash run.sh`}
             { window: "Poller", port: "\u2014", desc: "Instance state monitor" },
             { window: "Jobs", port: "\u2014", desc: "Scheduled job trigger" },
             { window: "BusTrigger", port: "\u2014", desc: "Message bus event trigger" },
+            { window: "LarkTrigger", port: "\u2014", desc: "Lark inbound message trigger" },
+            { window: "SlackTrigger", port: "\u2014", desc: "Slack inbound message trigger" },
+            { window: "TelegramTrigger", port: "\u2014", desc: "Telegram inbound message trigger" },
             { window: "Frontend", port: "5173", desc: "Vite dev server" },
           ].map((item) => (
             <div key={item.window} className="bg-paper p-2.5 flex gap-4">
@@ -241,21 +244,27 @@ function CloudMode() {
         </h3>
         <p className="font-body font-300 text-sm text-muted leading-relaxed mb-3">
           On the login page, click{" "}
-          <strong className="font-500 text-ink">Create Account</strong>. Fill in
-          a username, password, and the invite code:
+          <strong className="font-500 text-ink">Create Account</strong>. Enter a
+          username, a password, and your{" "}
+          <strong className="font-500 text-ink">invite code</strong> &mdash;
+          NarraNexus Cloud is invite-only.
         </p>
         <div className="border border-rule bg-paper-2/30 p-4 mb-3">
-          <div className="flex items-center gap-4">
-            <span className="font-body font-300 text-sm text-muted shrink-0">
-              Invite code
-            </span>
-            <code className="font-mono text-sm text-ink">
-              narranexuscloudxyz
-            </code>
-          </div>
+          <p className="font-body font-300 text-sm text-muted leading-relaxed">
+            Don&apos;t have an invite code?{" "}
+            <a href="/invite" className="font-500 text-ink underline">
+              Request one here
+            </a>{" "}
+            &mdash; we&apos;ll email you a code. Check your spam folder if it
+            doesn&apos;t arrive.
+          </p>
         </div>
         <p className="font-body font-300 text-sm text-muted leading-relaxed">
-          After registration, sign in with your new credentials.
+          Once you submit, you&apos;re signed in automatically and taken
+          straight to your dashboard &mdash; no separate login step. New
+          accounts come with{" "}
+          <strong className="font-500 text-ink">starter credits</strong> on the
+          system LLM provider.
         </p>
       </section>
 

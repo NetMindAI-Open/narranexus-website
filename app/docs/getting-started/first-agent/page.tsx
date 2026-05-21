@@ -31,8 +31,8 @@ export default function FirstAgentPage() {
         </p>
         <p className="font-body font-300 text-sm text-muted leading-relaxed">
           Behind the scenes, the system creates the agent record, initializes
-          all capability modules (Awareness, Chat, SocialNetwork, Memory,
-          Skills), and prepares the default Narrative.
+          all capability modules (Awareness, BasicInfo, Chat, SocialNetwork,
+          Memory, Skills), and prepares the default Narrative.
         </p>
       </section>
 
