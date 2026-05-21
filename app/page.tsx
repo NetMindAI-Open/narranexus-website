@@ -145,19 +145,20 @@ export default function Home() {
       <section className="max-w-[1400px] mx-auto px-6 pt-20 md:pt-24 pb-16 md:pb-20">
         <div className="flex items-center gap-3 mb-6 md:mb-8">
           <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>Open-Source Agent Framework</span>
+          <span className={eyebrow}>Multi-Agent Product · Open Source</span>
         </div>
 
         <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-700 leading-[1.05] tracking-tight max-w-4xl mb-5 md:mb-6">
-          Agents That Remember
+          An agent team,
           <br />
-          Who You Are
+          ready in one click.
         </h1>
 
         <p className="font-body font-300 text-base sm:text-lg md:text-xl text-muted max-w-2xl mb-8 md:mb-10 leading-relaxed">
-          Most agent frameworks treat every conversation as day one.
-          NarraNexus gives agents persistent memory, social identity, and
-          evolving expertise &mdash; across sessions, topics, and teams.
+          NarraNexus isn&rsquo;t another framework for wiring agents together
+          &mdash; it&rsquo;s a ready-to-run team of agents that already
+          remember, collaborate, and use tools. Start from a template, or
+          compose your own.
         </p>
 
         <div className="flex flex-wrap gap-3 sm:gap-4">
@@ -168,6 +169,17 @@ export default function Home() {
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
           >
             Try Online
+          </a>
+          {/* Direct download of the latest signed macOS build. GitHub's
+              /releases/latest/download/<asset> URL 302s to the asset, which
+              is served Content-Disposition: attachment — so the click
+              downloads the .dmg without navigating away. The build always
+              names the asset NarraNexus.dmg, so this URL is release-stable. */}
+          <a
+            href="https://github.com/NetMindAI-Open/NarraNexus/releases/latest/download/NarraNexus.dmg"
+            className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
+          >
+            Download for macOS
           </a>
           <Link
             href="/docs/getting-started/quick-start"
