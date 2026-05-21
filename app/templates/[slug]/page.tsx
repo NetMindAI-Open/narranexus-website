@@ -90,6 +90,16 @@ export default async function TemplateDetail({
             </p>
           </section>
 
+          {/* Usage tip — how to actually drive the template after install */}
+          <section className="mb-10">
+            <h2 className="font-heading text-xl font-700 mb-3">How to use it</h2>
+            <div className="border border-rule bg-paper-2/30 p-5">
+              <div className="font-body font-300 text-sm text-ink leading-relaxed whitespace-pre-line">
+                {renderInlineBold(t.usage_tip)}
+              </div>
+            </div>
+          </section>
+
           {/* Agent list */}
           <section className="mb-10">
             <h2 className="font-heading text-xl font-700 mb-4">
@@ -187,6 +197,24 @@ export default async function TemplateDetail({
         </aside>
       </div>
     </article>
+  );
+}
+
+/**
+ * Render a string with `**bold**` spans as <strong>, everything else plain.
+ * Newlines / lists are handled by the caller's `whitespace-pre-line`. This
+ * is the only markdown we support in usage_tip — deliberately tiny, so the
+ * website needs no markdown-renderer dependency.
+ */
+function renderInlineBold(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith("**") && part.endsWith("**") ? (
+      <strong key={i} className="font-500">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    ),
   );
 }
 
