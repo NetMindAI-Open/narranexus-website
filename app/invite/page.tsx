@@ -77,12 +77,12 @@ export default function InvitePage() {
           Drop your email below and we&rsquo;ll send you a one-time invite
           code. Use it to create your account at{" "}
           <a
-            href="https://agent.narra.nexus"
+            href="https://dev-agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
             className="text-ink underline underline-offset-2 hover:text-muted transition-colors"
           >
-            agent.narra.nexus
+            dev-agent.narra.nexus
           </a>
           .
         </p>
@@ -137,7 +137,7 @@ export default function InvitePage() {
             )}
             {outcome === "already_registered" && (
               <a
-                href="https://agent.narra.nexus"
+                href="https://dev-agent.narra.nexus"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block mt-4 font-mono text-xs text-ink underline underline-offset-2 hover:text-muted transition-colors"

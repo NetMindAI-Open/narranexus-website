@@ -8,7 +8,7 @@
  * since downloads work no matter what).
  *
  * Targets:
- *  - "cloud":    {NEXT_PUBLIC_NARRANEXUS_APP_URL || agent.narra.nexus}
+ *  - "cloud":    {NEXT_PUBLIC_NARRANEXUS_APP_URL || dev-agent.narra.nexus}
  *                /app/templates/install?url=...&sha256=... — HTTPS deep
  *                link to the cloud app; the cloud backend does the URL
  *                fetch and preflight.
@@ -36,7 +36,7 @@ const APP_OPEN_PROBE_MS = 2000;
 
 const CLOUD_APP_URL =
   process.env.NEXT_PUBLIC_NARRANEXUS_APP_URL?.replace(/\/$/, "") ||
-  "https://agent.narra.nexus";
+  "https://dev-agent.narra.nexus";
 const LOCAL_APP_URL = "http://localhost:5173";
 
 function buildHttpInstallUrl(
@@ -172,7 +172,7 @@ export function InstallChooser({ bundleUrl, sha256 }: Props) {
     name: string;
     subtitle: string;
   }> = [
-    { key: "cloud", name: "Cloud", subtitle: "agent.narra.nexus" },
+    { key: "cloud", name: "Cloud", subtitle: "dev-agent.narra.nexus" },
     { key: "local", name: "Local Build", subtitle: "build from git clone locally" },
     { key: "desktop", name: "Desktop App", subtitle: "NarraNexus DMG" },
     { key: "download", name: "Download .nxbundle", subtitle: "manual import" },

@@ -17,7 +17,7 @@
 import { sendEmail } from "@/lib/mailer";
 
 const BACKEND_URL =
-  process.env.NARRANEXUS_API_URL ?? "https://agent.narra.nexus";
+  process.env.NARRANEXUS_API_URL ?? "https://dev-agent.narra.nexus";
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -57,7 +57,7 @@ function inviteEmailBody(code: string): { text: string; html: string } {
   const text =
     `Welcome to NarraNexus!\n\n` +
     `Your invite code is: ${code}\n\n` +
-    `Create your account at https://agent.narra.nexus and enter this ` +
+    `Create your account at https://dev-agent.narra.nexus and enter this ` +
     `code when prompted.\n\n` +
     `This code can be used once. If you didn't request it, you can ` +
     `safely ignore this email.\n`;
@@ -69,7 +69,7 @@ function inviteEmailBody(code: string): { text: string; html: string } {
     `<p style="font-size:22px;font-weight:700;letter-spacing:2px;` +
     `font-family:ui-monospace,SFMono-Regular,Menlo,monospace">${code}</p>` +
     `<p>Create your account at ` +
-    `<a href="https://agent.narra.nexus">agent.narra.nexus</a> and ` +
+    `<a href="https://dev-agent.narra.nexus">dev-agent.narra.nexus</a> and ` +
     `enter this code when prompted.</p>` +
     `<p style="color:#666;font-size:13px">This code can be used once. ` +
     `If you didn't request it, you can safely ignore this email.</p>` +
