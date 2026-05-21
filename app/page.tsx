@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -70,53 +67,6 @@ const modules = [
   { name: "Skills", desc: "Marketplace plugins" },
   { name: "Agent Comms", desc: "Multi-agent bus" },
   { name: "RAG", desc: "Document knowledge" },
-];
-
-const showcaseTabs = [
-  {
-    id: "narrative",
-    label: "Narrative Memory",
-    title: "Topic-Aware Conversations",
-    points: [
-      "Messages automatically routed to the right topic storyline",
-      "3-stage selection: continuity detection → semantic search → agent decision",
-      "8 default Narratives per user — from greetings to deep technical discussions",
-      "Cross-topic awareness: the agent knows what you discussed elsewhere",
-    ],
-  },
-  {
-    id: "social",
-    label: "Social Intelligence",
-    title: "Relationships That Grow",
-    points: [
-      "Entities created automatically from conversations — no manual entry",
-      "Identity, expertise, and communication personas update with every interaction",
-      "Semantic search across the social graph by role, domain, or expertise",
-      "Multi-channel contact: reach people through their preferred platform",
-    ],
-  },
-  {
-    id: "jobs",
-    label: "Autonomous Jobs",
-    title: "Work That Happens in the Background",
-    points: [
-      "One-off reminders, scheduled checks, recurring tasks, and ongoing monitoring",
-      "Jobs execute with full Narrative context and Social Network awareness",
-      "Post-execution LLM analysis determines next steps automatically",
-      "Results reported through chat — only when there’s something to say",
-    ],
-  },
-  {
-    id: "multi",
-    label: "Multi-Agent",
-    title: "Agents That Collaborate",
-    points: [
-      "MessageBus with channels, direct messages, and @mentions",
-      "Agent discovery by capability — find the right agent for the task",
-      "Rate limiting and poison message detection prevent runaway loops",
-      "Reply discipline: agents only respond when they have something to contribute",
-    ],
-  },
 ];
 
 const personas = [
@@ -189,9 +139,6 @@ const sectionHeading = "font-heading text-2xl sm:text-3xl md:text-4xl font-700";
 /* ------------------------------------------------------------------ */
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("narrative");
-  const activeShowcase = showcaseTabs.find((t) => t.id === activeTab)!;
-
   return (
     <div>
       {/* ── Hero ─────────────────────────────────────────────────── */}
@@ -396,95 +343,6 @@ export default function Home() {
             Read the full architecture guide &rarr;
           </Link>
         </p>
-      </section>
-
-      <hr className="border-rule max-w-[1400px] mx-auto" />
-
-      {/* ── See It in Action ─────────────────────────────────────── */}
-      <section className={sectionWrap}>
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>In Practice</span>
-        </div>
-
-        <h2 className={`${sectionHeading} mb-8 md:mb-10`}>
-          See it in action
-        </h2>
-
-        {/* Tabs */}
-        <div
-          role="tablist"
-          aria-label="Feature showcase"
-          className="relative flex gap-0 border-b border-rule mb-8 overflow-x-auto scrollbar-none"
-        >
-          {showcaseTabs.map((tab) => {
-            const selected = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                role="tab"
-                id={`tab-${tab.id}`}
-                aria-selected={selected}
-                aria-controls={`panel-${tab.id}`}
-                tabIndex={selected ? 0 : -1}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 sm:px-5 py-2.5 font-body text-sm font-400 transition-colors whitespace-nowrap border-b-2 -mb-px ${
-                  selected
-                    ? "border-ink text-ink"
-                    : "border-transparent text-muted hover:text-ink"
-                }`}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Content */}
-        <div
-          role="tabpanel"
-          id={`panel-${activeShowcase.id}`}
-          aria-labelledby={`tab-${activeShowcase.id}`}
-          className="grid lg:grid-cols-2 gap-8 lg:gap-10"
-        >
-          <div>
-            <h3 className="font-heading text-xl font-700 mb-4">
-              {activeShowcase.title}
-            </h3>
-            <ul className="space-y-3">
-              {activeShowcase.points.map((point, i) => (
-                <li
-                  key={i}
-                  className="font-body font-300 text-sm text-muted leading-relaxed flex gap-3"
-                >
-                  <span className="w-5 h-5 border border-rule flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="font-mono text-[10px] text-muted">
-                      {i + 1}
-                    </span>
-                  </span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Visual placeholder */}
-          <div className="border border-rule bg-paper-2/30 p-8 flex items-center justify-center min-h-[240px] md:min-h-[280px]">
-            <div className="text-center">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted block mb-3">
-                {activeShowcase.label}
-              </span>
-              <div className="w-40 md:w-48 h-28 md:h-32 border border-rule bg-paper mx-auto mb-3 flex items-center justify-center">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-muted/50">
-                  Preview
-                </span>
-              </div>
-              <span className="font-body font-300 text-xs text-muted">
-                Screenshots coming soon
-              </span>
-            </div>
-          </div>
-        </div>
       </section>
 
       <hr className="border-rule max-w-[1400px] mx-auto" />
