@@ -237,6 +237,17 @@ export default function Home() {
             GitHub
           </a>
         </div>
+
+        <p className="font-body font-300 text-xs text-muted mt-4">
+          The cloud version is invite-only while we scale up.{" "}
+          <Link
+            href="/invite"
+            className="text-ink underline underline-offset-2 hover:text-muted transition-colors"
+          >
+            Request an invite code
+          </Link>{" "}
+          &mdash; or run the desktop / local version with no invite needed.
+        </p>
       </section>
 
       <hr className="border-rule max-w-[1400px] mx-auto" />

@@ -129,6 +129,12 @@ export default function InvitePage() {
             <p className="font-body font-300 text-sm text-muted leading-relaxed">
               {message}
             </p>
+            {outcome === "issued" && (
+              <p className="mt-3 font-body font-300 text-xs text-muted leading-relaxed">
+                Don&rsquo;t see it within a few minutes? Check your spam or
+                promotions folder &mdash; the code email can land there.
+              </p>
+            )}
             {outcome === "already_registered" && (
               <a
                 href="https://agent.narra.nexus"
