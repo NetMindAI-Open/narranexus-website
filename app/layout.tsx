@@ -1,8 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, Barlow, DM_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ConsentDefault } from "@/components/analytics/consent-default";
+import { ConsentBanner } from "@/components/analytics/consent-banner";
+
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const analyticsEnabled = process.env.NODE_ENV === "production" && Boolean(gaId);
 
 // Matches internal.netmind.foundation exactly:
 //   Space Grotesk 400;500;600;700
@@ -96,6 +102,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${barlow.variable} ${dmMono.variable} h-full antialiased`}
     >
+      {analyticsEnabled && <ConsentDefault />}
       <body className="relative z-10 min-h-full flex flex-col">
         <a
           href="#main"
@@ -108,7 +115,9 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {analyticsEnabled && <ConsentBanner />}
       </body>
+      {analyticsEnabled && gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
