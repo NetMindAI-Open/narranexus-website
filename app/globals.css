@@ -72,7 +72,7 @@ body::before {
   background-size: 72px 72px;
 }
 
-body > * {
+body > *:not([data-overlay]) {
   position: relative;
   z-index: 1;
 }
