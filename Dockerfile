@@ -22,6 +22,11 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# NEXT_PUBLIC_* vars are inlined at build time, so the deploy stack
+# must pass NEXT_PUBLIC_GA_ID as a build-arg (see compose.yml) or the
+# value lands as `undefined` in the client bundle and GA never mounts.
+ARG NEXT_PUBLIC_GA_ID
+ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
