@@ -275,7 +275,17 @@ function CloudMode() {
         <div className="border border-rule bg-paper-2/30 p-4 mb-3">
           <p className="font-body font-300 text-sm text-muted leading-relaxed">
             Don&apos;t have an invite code?{" "}
-            <a href="/invite" className="font-500 text-ink underline">
+            <a
+              href="/invite"
+              onClick={() =>
+                track({
+                  event: "cta_click",
+                  cta_name: "get_invite_code",
+                  cta_location: "docs_section",
+                })
+              }
+              className="font-500 text-ink underline"
+            >
               Request one here
             </a>{" "}
             &mdash; we&apos;ll email you a code. Check your spam folder if it
