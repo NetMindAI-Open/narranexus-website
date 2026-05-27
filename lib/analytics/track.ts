@@ -38,12 +38,15 @@ export function track(payload: TrackPayload): void {
   if (!hasConsent()) return;
 
   const anonymous_id = getOrCreate(window.localStorage, ANON_KEY);
-  const session_id = getOrCreate(window.sessionStorage, SESSION_KEY);
+  // `session_id` is reserved by GA4 (its built-in session dimension uses
+  // ga_session_id under the hood) and cannot be registered as a custom
+  // dimension, so we namespace ours.
+  const portal_session_id = getOrCreate(window.sessionStorage, SESSION_KEY);
 
   sendGAEvent("event", payload.event, {
     ...payload,
     anonymous_id,
-    session_id,
+    portal_session_id,
     source: SOURCE,
   });
 }
