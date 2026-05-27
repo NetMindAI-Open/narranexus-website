@@ -1,90 +1,100 @@
 import Link from "next/link";
+import { HomeBriefingMockup } from "@/components/home-briefing-mockup";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
 /* ------------------------------------------------------------------ */
 
-const painPoints = [
+const setupSteps = [
   {
-    pain: "Agents forget everything between sessions",
-    solution: "Narrative Memory",
-    desc: "Conversations are organized into topic-based storylines that persist for weeks. Your agent picks up right where you left off — even if the last message was 3 weeks ago on a different topic.",
+    icon: "spark",
+    title: "Set it up",
+    desc: "Open the cloud app, install the macOS build, or run it locally from source. Pick the surface that fits. Your team is ready in minutes.",
+    tag: "WEB · DESKTOP · LOCAL",
   },
   {
-    pain: "Agents don’t know who they’re talking to",
-    solution: "Social Intelligence",
-    desc: "Agents build a graph of everyone they interact with — names, roles, expertise, communication style. They adapt how they work based on who’s asking.",
+    icon: "stack",
+    title: "Browse a template",
+    desc: "Pick a ready-made agent team: a research desk, a content studio, a briefing bot. Or start blank and shape your own.",
+    tag: "TEMPLATES",
   },
   {
-    pain: "Agent capabilities are monolithic and rigid",
-    solution: "Modular Architecture",
-    desc: "Hot-swap capability modules without touching core logic. Add memory, jobs, skills, or agent-to-agent communication as independent plugins.",
+    icon: "chat",
+    title: "Import & start talking",
+    desc: "One click to import. Your agents are online, share memory, and use tools out of the box. No wiring, no glue code.",
+    tag: "ZERO CONFIG",
   },
 ];
 
-const capabilities = [
+const scenarios = [
   {
-    title: "Narrative Memory",
-    subtitle: "Conversations become storylines",
-    desc: "Every topic becomes a persistent Narrative with its own history, active modules, and summary. The agent routes new messages to the right storyline automatically — or creates a new one when the topic is genuinely new.",
+    icon: "chart",
+    title: "Your AI research team",
+    desc: "Daily morning briefings, market scans, deep dives. Agents that hold context across weeks of research instead of starting from scratch.",
+  },
+  {
+    icon: "film",
+    title: "Your content studio",
+    desc: "From idea to script to draft. Writers, editors, and producers that hand off cleanly. They remember what shipped last week.",
+  },
+  {
+    icon: "heart",
+    title: "A warm friend",
+    desc: "Someone who remembers what you told them last Tuesday. A companion that picks up where you left off, in your tone of voice.",
+  },
+];
+
+const coreFeatures = [
+  {
+    title: "Remembers the whole story, not just the last chapter",
+    subtitle: "Narrative Memory",
+    desc: "Topics become persistent storylines that carry their own history and active modules. New messages route to the right thread automatically. New subjects open a fresh one.",
     link: "/docs/core-concepts/narrative",
   },
   {
-    title: "Social Awareness",
-    subtitle: "Agents that build relationships",
-    desc: "Your agent tracks every person, team, and agent it encounters — their roles, expertise, preferences, and history. Follow up on leads, manage stakeholder relationships, coordinate across agents, and never lose context on who’s involved in what.",
-    link: "/docs/modules/social-network",
+    title: "Brings its own team to the job",
+    subtitle: "Team Collaboration",
+    desc: "Spin up a research desk, a content team, or an on-call rotation. Agents coordinate over a shared message bus: DM, group chat, hand-offs, and shared context across the whole team.",
+    link: "/docs/modules/agent-comms",
   },
   {
-    title: "Autonomous Work",
-    subtitle: "Background tasks that just happen",
-    desc: "Schedule one-off reminders, recurring checks, or ongoing monitoring tasks. Jobs run in the background with full context and report results through chat when they complete.",
+    title: "Works while you sleep",
+    subtitle: "Jobs & Long Tasks",
+    desc: "Schedule one-offs, cron jobs, or always-on daemons. Agents work in the background and report back through chat when the results are ready.",
     link: "/docs/modules/jobs",
   },
   {
-    title: "Extensible by Design",
-    subtitle: "Nothing is hardcoded",
-    desc: "Modules are independent and hot-swappable. Skills install from a marketplace. LLM providers swap without code changes. Build with Claude, OpenAI, or Gemini — or switch between them.",
-    link: "/docs/core-concepts/modules",
+    title: "Builds its own circle of contacts and fans",
+    subtitle: "Social Network",
+    desc: "Every person, team, and agent it meets joins a graph your agent maintains: roles, expertise, communication style, history. It adapts who it talks to and how, based on who's asking.",
+    link: "/docs/modules/social-network",
   },
 ];
 
-const architectureLayers = [
-  { label: "Frontend",      tech: "React · Tauri Desktop",                  bg: "bg-secondary/8",  border: "border-secondary/20" },
-  { label: "API Gateway",   tech: "FastAPI · REST + WebSocket",              bg: "bg-secondary/12", border: "border-secondary/25" },
-  { label: "Agent Runtime", tech: "6-Step Pipeline · Context Engine",        bg: "bg-secondary/18", border: "border-secondary/30" },
-  { label: "Module System", tech: "Hot-Swappable · MCP Tools",                bg: "bg-secondary/24", border: "border-secondary/35" },
-  { label: "Services",      tech: "Narrative · Memory · Social · Jobs", bg: "bg-secondary/30", border: "border-secondary/40" },
-  { label: "Data Layer",    tech: "SQLite · MySQL · Vector Store",       bg: "bg-secondary/36", border: "border-secondary/45" },
-];
-
-const modules = [
-  { name: "Awareness", desc: "Self-knowledge" },
-  { name: "Chat", desc: "Session management" },
-  { name: "Memory", desc: "Dual-track recall" },
-  { name: "Social Network", desc: "Relationship graph" },
-  { name: "Jobs", desc: "Background tasks" },
-  { name: "Skills", desc: "Marketplace plugins" },
-  { name: "Agent Comms", desc: "Multi-agent bus" },
-  { name: "RAG", desc: "Document knowledge" },
-];
-
-const personas = [
+const faqs = [
   {
-    title: "Personal Assistant",
-    desc: "An agent that remembers your preferences, manages reminders, and adapts to how you like to communicate — across days, weeks, and topics.",
+    q: "Is there a free tier?",
+    a: "Yes. New cloud accounts get a system-provided token quota covering Agent inference, embeddings, and helper calls. Enough to try the product end-to-end before you bring your own keys.",
   },
   {
-    title: "Team Coordinator",
-    desc: "Multi-agent systems where each agent has a specialty — research, scheduling, code review — and they coordinate through the MessageBus.",
+    q: "Can I bring my own model or API key?",
+    a: "Yes. NarraNexus runs on a three-slot architecture: Agent, Embedding, and Helper. You can plug in NetMind.AI Power (covers all three), OpenRouter, Yunwu, or any custom Anthropic / OpenAI-compatible endpoint.",
   },
   {
-    title: "Developers",
-    desc: "Build agents with persistent memory and social awareness in hours, not weeks. Modular architecture means you extend, not rewrite.",
+    q: "Do my chats stay private?",
+    a: "Yes. Every agent is private by default: only you see its conversations. You can flip an agent public so others can discover and talk to it, but their chats stay isolated from yours.",
   },
   {
-    title: "Researchers",
-    desc: "Experiment with narrative-driven agent architectures. Study how topic-based memory and social graphs affect agent behavior over time.",
+    q: "Will my agent remember things between sessions?",
+    a: "Short-term memory in the active conversation is handled by the Chat module. Cross-session long-term memory lives in Narrative. Your agent picks up the right thread even weeks later, organized by topic rather than timestamp.",
+  },
+  {
+    q: "Can I run it fully locally?",
+    a: "Yes. The macOS desktop app ships with a bundled runtime and runs entirely on your machine: no account, no network round-trip. From source, one bash run.sh starts the full stack.",
+  },
+  {
+    q: "Multi-device login?",
+    a: "Supported. JWT tokens are per-device, so you can stay signed in on laptop, desktop, and phone in parallel. Agent narratives live server-side and stay in sync across them.",
   },
 ];
 
@@ -135,6 +145,72 @@ const eyebrow = "font-mono text-[11px] uppercase tracking-widest text-muted";
 const sectionHeading = "font-heading text-2xl sm:text-3xl md:text-4xl font-700";
 
 /* ------------------------------------------------------------------ */
+/*  Inline icons — simple stroke glyphs, 24px, currentColor             */
+/* ------------------------------------------------------------------ */
+
+function Icon({ name, className = "w-6 h-6" }: { name: string; className?: string }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.5,
+    strokeLinecap: "square" as const,
+    strokeLinejoin: "miter" as const,
+    className,
+    "aria-hidden": true,
+  };
+  switch (name) {
+    case "spark":
+      return (
+        <svg {...common}>
+          <path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.2 4.2M14.2 14.2l4.2 4.2M5.6 18.4l4.2-4.2M14.2 9.8l4.2-4.2" />
+        </svg>
+      );
+    case "stack":
+      return (
+        <svg {...common}>
+          <path d="M3 7l9-4 9 4-9 4-9-4z" />
+          <path d="M3 12l9 4 9-4" />
+          <path d="M3 17l9 4 9-4" />
+        </svg>
+      );
+    case "chat":
+      return (
+        <svg {...common}>
+          <path d="M4 5h16v11H8l-4 4V5z" />
+          <path d="M8 10h8M8 13h5" />
+        </svg>
+      );
+    case "chart":
+      return (
+        <svg {...common}>
+          <path d="M3 20h18" />
+          <path d="M6 16l4-5 4 3 5-8" />
+          <circle cx="6" cy="16" r="1" />
+          <circle cx="10" cy="11" r="1" />
+          <circle cx="14" cy="14" r="1" />
+          <circle cx="19" cy="6" r="1" />
+        </svg>
+      );
+    case "film":
+      return (
+        <svg {...common}>
+          <rect x="3" y="6" width="18" height="12" />
+          <path d="M3 10h18M3 14h18M7 6v12M17 6v12" />
+        </svg>
+      );
+    case "heart":
+      return (
+        <svg {...common}>
+          <path d="M12 20s-7-4.5-7-10a4 4 0 017-2.7A4 4 0 0119 10c0 5.5-7 10-7 10z" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -155,10 +231,10 @@ export default function Home() {
         </h1>
 
         <p className="font-body font-300 text-base sm:text-lg md:text-xl text-muted max-w-2xl mb-8 md:mb-10 leading-relaxed">
-          NarraNexus isn&rsquo;t another framework for wiring agents together
-          &mdash; it&rsquo;s a ready-to-run team of agents that already
-          remember, collaborate, and use tools. Start from a template, or
-          compose your own.
+          NarraNexus isn&rsquo;t another framework for wiring agents together.
+          It&rsquo;s a ready-to-run team of agents that already remember,
+          collaborate, and use tools. Start from a template, or compose your
+          own.
         </p>
 
         <div className="flex flex-wrap gap-3 sm:gap-4">
@@ -204,36 +280,75 @@ export default function Home() {
             className="text-ink underline underline-offset-2 hover:text-muted transition-colors"
           >
             Request an invite code
-          </Link>{" "}
-          &mdash; or run the desktop / local version with no invite needed.
+          </Link>
+          , or run the desktop / local version with no invite needed.
         </p>
       </section>
 
       <hr className="border-rule max-w-[1400px] mx-auto" />
 
-      {/* ── Problem → Solution ───────────────────────────────────── */}
+      {/* ── Setup in 3 steps ─────────────────────────────────────── */}
       <section className={sectionWrap}>
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>Why NarraNexus</span>
+          <span className={eyebrow}>Get started</span>
         </div>
 
-        <h2 className={`${sectionHeading} mb-10 md:mb-12`}>
-          The problems we solve
+        <h2 className={`${sectionHeading} mb-3`}>
+          A working agent team in three steps.
         </h2>
+        <p className="font-body font-300 text-muted mb-10 md:mb-12 max-w-2xl">
+          No config sprawl. No bespoke wiring. Pick a surface, drop in a
+          template, start the conversation.
+        </p>
 
         <div className="grid md:grid-cols-3 gap-px bg-rule">
-          {painPoints.map((p) => (
-            <div key={p.solution} className="bg-paper p-6 md:p-8">
-              <p className="font-body font-300 text-sm text-muted mb-4 leading-relaxed">
-                &ldquo;{p.pain}&rdquo;
+          {setupSteps.map((s, i) => (
+            <div key={s.title} className="bg-paper p-6 md:p-8 flex flex-col">
+              <Icon name={s.icon} className="w-6 h-6 text-ink mb-5" />
+              <span className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">
+                Step {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="font-heading text-lg font-700 mb-3">
+                {s.title}
+              </h3>
+              <p className="font-body font-300 text-sm text-muted leading-relaxed mb-5 flex-1">
+                {s.desc}
               </p>
-              <div className="w-6 h-px bg-ink mb-4" aria-hidden="true" />
-              <h3 className="font-heading text-lg font-700 mb-2">
-                {p.solution}
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted pt-4 border-t border-rule">
+                {s.tag}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <hr className="border-rule max-w-[1400px] mx-auto" />
+
+      {/* ── Scenarios ────────────────────────────────────────────── */}
+      <section className={sectionWrap}>
+        <div className="flex items-center gap-3 mb-6">
+          <span className="w-8 h-px bg-ink block" aria-hidden="true" />
+          <span className={eyebrow}>Built for</span>
+        </div>
+
+        <h2 className={`${sectionHeading} mb-3`}>
+          What you can put it to work on.
+        </h2>
+        <p className="font-body font-300 text-muted mb-10 md:mb-12 max-w-2xl">
+          Three starting points. Concept-level for now. Drop in a template
+          and the team is live.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-px bg-rule">
+          {scenarios.map((s) => (
+            <div key={s.title} className="bg-paper p-6 md:p-8 flex flex-col">
+              <Icon name={s.icon} className="w-6 h-6 text-ink mb-5" />
+              <h3 className="font-heading text-lg font-700 mb-3">
+                {s.title}
               </h3>
               <p className="font-body font-300 text-sm text-muted leading-relaxed">
-                {p.desc}
+                {s.desc}
               </p>
             </div>
           ))}
@@ -242,19 +357,59 @@ export default function Home() {
 
       <hr className="border-rule max-w-[1400px] mx-auto" />
 
-      {/* ── Key Capabilities ─────────────────────────────────────── */}
+      {/* ── In Practice (imagery) ────────────────────────────────── */}
+      <section className={sectionWrap}>
+        <div className="flex items-center gap-3 mb-6">
+          <span className="w-8 h-px bg-ink block" aria-hidden="true" />
+          <span className={eyebrow}>In practice</span>
+        </div>
+
+        <h2 className={`${sectionHeading} mb-3 max-w-3xl`}>
+          Your agent, at work.
+        </h2>
+        <p className="font-body font-300 text-muted mb-10 md:mb-12 max-w-2xl">
+          The Financial Morning Briefing template mid-flow. Briefing Maestro
+          coordinates five analysts behind the scenes, then delivers the
+          day&rsquo;s brief in your language, while you make coffee.
+        </p>
+
+        {/* Print-mat frame: paper-2 acts as the museum mat, hairline
+            rule bounds the inset mockup, mono caption strip beneath.
+            The mockup itself is a stylized rendition of the cloud app
+            (see components/home-briefing-mockup.tsx); built in HTML so
+            it stays crisp at every viewport and never goes out of sync
+            with a static screenshot. */}
+        <figure className="bg-paper-2 border border-rule p-3 md:p-4">
+          <HomeBriefingMockup />
+          <figcaption className="font-mono text-[10px] uppercase tracking-widest text-muted pt-3 md:pt-4 flex flex-wrap gap-x-3 gap-y-1">
+            <span>Briefing Maestro</span>
+            <span aria-hidden="true">·</span>
+            <span>Financial Morning Briefing · 金融晨报</span>
+            <span aria-hidden="true">·</span>
+            <span>Cloud</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <hr className="border-rule max-w-[1400px] mx-auto" />
+
+      {/* ── Core Features ────────────────────────────────────────── */}
       <section id="features" className={`scroll-mt-16 ${sectionWrap}`}>
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-px bg-ink block" aria-hidden="true" />
           <span className={eyebrow}>Capabilities</span>
         </div>
 
-        <h2 className={`${sectionHeading} mb-10 md:mb-12`}>
-          What makes NarraNexus different
+        <h2 className={`${sectionHeading} mb-3`}>
+          What every agent comes with.
         </h2>
+        <p className="font-body font-300 text-muted mb-10 md:mb-12 max-w-2xl">
+          No wiring, no extensions. Four things your agent already has, the
+          moment you import it.
+        </p>
 
         <div className="grid md:grid-cols-2 gap-px bg-rule">
-          {capabilities.map((c) => (
+          {coreFeatures.map((c) => (
             <div key={c.title} className="bg-paper p-6 md:p-8 group">
               <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
                 {c.subtitle}
@@ -279,198 +434,39 @@ export default function Home() {
 
       <hr className="border-rule max-w-[1400px] mx-auto" />
 
-      {/* ── Architecture ─────────────────────────────────────────── */}
+      {/* ── FAQ ──────────────────────────────────────────────────── */}
       <section className={sectionWrap}>
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>Architecture</span>
-        </div>
-
-        <h2 className={`${sectionHeading} mb-3`}>
-          System Overview
-        </h2>
-        <p className="font-body font-300 text-muted mb-10">
-          A layered pipeline from user interface to persistent storage.
-        </p>
-
-        <div className="grid lg:grid-cols-[1fr_320px] gap-8 lg:gap-10">
-          {/* Layer stack */}
-          <div className="space-y-1.5">
-            {architectureLayers.map((layer, i) => (
-              <div
-                key={layer.label}
-                className={`${layer.bg} border ${layer.border} px-4 py-3 md:p-4 flex items-center justify-between`}
-                style={{
-                  marginLeft: `clamp(0px, ${i * 12}px, ${i * 4}vw)`,
-                }}
-              >
-                <div className="min-w-0">
-                  <span className="font-heading text-sm font-700 text-ink">
-                    {layer.label}
-                  </span>
-                  <span className="font-body font-300 text-xs text-muted ml-3 hidden sm:inline">
-                    {layer.tech}
-                  </span>
-                  <span className="font-body font-300 text-xs text-muted block sm:hidden mt-0.5">
-                    {layer.tech}
-                  </span>
-                </div>
-                {i < architectureLayers.length - 1 && (
-                  <span className="font-mono text-xs text-muted/50 shrink-0 ml-3" aria-hidden="true">
-                    &darr;
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Module grid */}
-          <div>
-            <span className="font-mono text-[10px] uppercase tracking-widest text-muted block mb-3">
-              Module System
-            </span>
-            <div className="grid grid-cols-2 gap-px bg-rule">
-              {modules.map((m) => (
-                <div
-                  key={m.name}
-                  className="bg-paper p-3 flex flex-col"
-                >
-                  <span className="font-heading text-xs font-700">
-                    {m.name}
-                  </span>
-                  <span className="font-body font-300 text-[11px] text-muted mt-0.5">
-                    {m.desc}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <p className="mt-8 text-sm text-muted font-body font-300">
-          <Link
-            href="/docs/core-concepts/architecture"
-            className="underline underline-offset-2 hover:text-ink transition-colors"
-          >
-            Read the full architecture guide &rarr;
-          </Link>
-        </p>
-      </section>
-
-      <hr className="border-rule max-w-[1400px] mx-auto" />
-
-      {/* ── Who Is It For ────────────────────────────────────────── */}
-      <section className={sectionWrap}>
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>Use Cases</span>
+          <span className={eyebrow}>FAQ</span>
         </div>
 
         <h2 className={`${sectionHeading} mb-10 md:mb-12`}>
-          Who is it for
+          Common questions
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-rule">
-          {personas.map((p) => (
-            <div key={p.title} className="bg-paper p-6">
-              <h3 className="font-heading text-base font-700 mb-2">
-                {p.title}
-              </h3>
-              <p className="font-body font-300 text-sm text-muted leading-relaxed">
-                {p.desc}
-              </p>
+        <dl className="border-t border-rule">
+          {faqs.map((f) => (
+            <div
+              key={f.q}
+              className="grid md:grid-cols-[280px_1fr] gap-4 md:gap-12 border-b border-rule py-6 md:py-7"
+            >
+              <dt className="font-heading text-base md:text-lg font-700 text-ink">
+                {f.q}
+              </dt>
+              <dd className="font-body font-300 text-sm md:text-[15px] text-muted leading-relaxed">
+                {f.a}
+              </dd>
             </div>
           ))}
-        </div>
-      </section>
+        </dl>
 
-      <hr className="border-rule max-w-[1400px] mx-auto" />
-
-      {/* ── Quick Start ──────────────────────────────────────────── */}
-      <section className={sectionWrap}>
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>Quick Start</span>
-        </div>
-
-        <h2 className={`${sectionHeading} mb-3`}>
-          Try it in 60 seconds
-        </h2>
-        <p className="font-body font-300 text-muted mb-8">
-          Three ways to get started, from zero-install to full local setup.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-px bg-rule">
-          {/* Cloud */}
-          <div className="bg-paper p-6 flex flex-col">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="font-heading text-base font-700">Cloud</span>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-muted px-1.5 py-0.5 border border-rule">
-                Fastest
-              </span>
-            </div>
-            <p className="font-body font-300 text-sm text-muted leading-relaxed mb-5 flex-1">
-              No installation. Open in your browser, create an account, and
-              start chatting with your agent immediately.
-            </p>
-            <a
-              href="https://agent.narra.nexus"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="self-start px-4 py-1.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"
-            >
-              Open NarraNexus Web
-            </a>
-          </div>
-
-          {/* Desktop */}
-          <div className="bg-paper p-6 flex flex-col">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="font-heading text-base font-700">Desktop App</span>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-muted px-1.5 py-0.5 border border-rule">
-                macOS
-              </span>
-            </div>
-            <p className="font-body font-300 text-sm text-muted leading-relaxed mb-5 flex-1">
-              Download the macOS app. Bundled Python, auto-starts all services.
-              No terminal required.
-            </p>
-            <a
-              href="https://github.com/NetMindAI-Open/NarraNexus/releases/latest"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs text-ink underline underline-offset-2 hover:text-muted transition-colors self-start"
-            >
-              Download latest release &rarr;
-            </a>
-          </div>
-
-          {/* Local */}
-          <div className="bg-paper p-6 flex flex-col">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="font-heading text-base font-700">From Source</span>
-              <span className="font-mono text-[9px] uppercase tracking-wider text-muted px-1.5 py-0.5 border border-rule">
-                Developer
-              </span>
-            </div>
-            <p className="font-body font-300 text-sm text-muted leading-relaxed mb-4 flex-1">
-              Full local setup with tmux, 7 services, and hot-reload for
-              development.
-            </p>
-            <div className="border border-rule bg-paper-2/30 p-3">
-              <code className="font-mono text-xs text-ink break-all leading-relaxed">
-                git clone https://github.com/NetMindAI-Open/NarraNexus.git &amp;&amp; bash run.sh
-              </code>
-            </div>
-          </div>
-        </div>
-
-        <p className="mt-6 text-sm text-muted font-body font-300">
+        <p className="mt-8 text-sm text-muted font-body font-300">
           <Link
-            href="/docs/getting-started/quick-start"
+            href="/docs"
             className="underline underline-offset-2 hover:text-ink transition-colors"
           >
-            Detailed setup guide &rarr;
+            Full beginner guide and FAQ &rarr;
           </Link>
         </p>
       </section>
@@ -541,6 +537,66 @@ export default function Home() {
             );
           })}
         </ol>
+      </section>
+
+      <hr className="border-rule max-w-[1400px] mx-auto" />
+
+      {/* ── Final CTA ────────────────────────────────────────────── */}
+      <section className={sectionWrap}>
+        <div className="flex items-center gap-3 mb-6">
+          <span className="w-8 h-px bg-ink block" aria-hidden="true" />
+          <span className={eyebrow}>Ready</span>
+        </div>
+
+        <h2 className={`${sectionHeading} mb-5 md:mb-6 max-w-3xl`}>
+          Start with your first agent team.
+        </h2>
+        <p className="font-body font-300 text-base md:text-lg text-muted max-w-2xl mb-8 md:mb-10 leading-relaxed">
+          Pick a surface, import a template, send your first message. Most
+          people are talking to a working team inside a minute.
+        </p>
+
+        <div className="flex flex-wrap gap-3 sm:gap-4">
+          <a
+            href="https://agent.narra.nexus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
+          >
+            Try Online
+          </a>
+          <a
+            href="https://github.com/NetMindAI-Open/NarraNexus/releases/latest/download/NarraNexus.dmg"
+            className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
+          >
+            Download for macOS
+          </a>
+          <Link
+            href="/docs/getting-started/quick-start"
+            className="px-6 py-2.5 border border-ink text-ink font-body text-sm font-400 hover:bg-ink hover:text-paper transition-colors"
+          >
+            Get Started
+          </Link>
+          <a
+            href="https://github.com/NetMindAI-Open/NarraNexus"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2.5 border border-rule text-muted font-body text-sm font-400 hover:border-ink hover:text-ink transition-colors"
+          >
+            GitHub
+          </a>
+        </div>
+
+        <p className="font-body font-300 text-xs text-muted mt-4">
+          Cloud is invite-only while we scale up.{" "}
+          <Link
+            href="/invite"
+            className="text-ink underline underline-offset-2 hover:text-muted transition-colors"
+          >
+            Request an invite code
+          </Link>
+          , or run the desktop / local version with no invite needed.
+        </p>
       </section>
     </div>
   );
