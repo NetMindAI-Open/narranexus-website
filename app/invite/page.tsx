@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { track } from "@/lib/analytics/track";
 
 type Outcome = "issued" | "waitlisted" | "already_registered" | "error";
 
@@ -20,6 +21,14 @@ export default function InvitePage() {
   const [loading, setLoading] = useState(false);
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    track({
+      event: "cta_click",
+      cta_name: "get_invite_code",
+      cta_location: "login_page",
+    });
+  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,6 +50,12 @@ export default function InvitePage() {
         setMessage(data.error || "Something went wrong. Please try again.");
         return;
       }
+
+      track({
+        event: "cta_click",
+        cta_name: "request_invite",
+        cta_location: "login_page",
+      });
 
       if (data.status === "waitlisted") setOutcome("waitlisted");
       else if (data.status === "already_registered")
@@ -80,6 +95,13 @@ export default function InvitePage() {
             href="https://agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "try_online",
+                cta_location: "login_page",
+              })
+            }
             className="text-ink underline underline-offset-2 hover:text-muted transition-colors"
           >
             agent.narra.nexus
@@ -140,6 +162,13 @@ export default function InvitePage() {
                 href="https://agent.narra.nexus"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  track({
+                    event: "cta_click",
+                    cta_name: "try_online",
+                    cta_location: "login_page",
+                  })
+                }
                 className="inline-block mt-4 font-mono text-xs text-ink underline underline-offset-2 hover:text-muted transition-colors"
               >
                 Go to sign in &rarr;

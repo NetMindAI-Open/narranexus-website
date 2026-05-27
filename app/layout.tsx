@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { Space_Grotesk, Inter, Barlow, DM_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
@@ -6,6 +7,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ConsentDefault } from "@/components/analytics/consent-default";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
+import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
 const analyticsEnabled = process.env.NODE_ENV === "production" && Boolean(gaId);
@@ -115,6 +117,11 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        {analyticsEnabled && (
+          <Suspense fallback={null}>
+            <PageViewTracker />
+          </Suspense>
+        )}
         {analyticsEnabled && <ConsentBanner />}
       </body>
       {analyticsEnabled && gaId && <GoogleAnalytics gaId={gaId} />}

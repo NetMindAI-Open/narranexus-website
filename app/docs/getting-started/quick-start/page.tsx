@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics/track";
+import { CopyButton } from "@/components/analytics/copy-button";
 
 type Mode = "local" | "desktop" | "cloud";
 
@@ -30,12 +32,14 @@ function LocalMode() {
         <h3 className="font-heading text-lg font-700 mb-3">
           1. Clone &amp; Install
         </h3>
-        <div className="border border-rule bg-paper-2/30 p-4 mb-3">
-          <pre className="font-mono text-sm text-ink leading-relaxed whitespace-pre-wrap">
-            {`git clone https://github.com/NetMindAI-Open/NarraNexus.git
+        <div className="mb-3">
+          <CopyButton
+            text={`git clone https://github.com/NetMindAI-Open/NarraNexus.git
 cd NarraNexus
 bash run.sh`}
-          </pre>
+            utm_location="docs_quick_start_local"
+            className="border border-rule bg-paper-2/30 p-4 flex items-start gap-3"
+          />
         </div>
         <p className="font-body font-300 text-sm text-muted leading-relaxed">
           The script checks for{" "}
@@ -176,6 +180,13 @@ function DesktopMode() {
             href="https://github.com/NetMindAI-Open/NarraNexus/releases"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "download_macos",
+                cta_location: "docs_section",
+              })
+            }
             className="font-500 text-ink underline"
           >
             releases page
@@ -231,11 +242,23 @@ function CloudMode() {
         <p className="font-body font-300 text-sm text-muted leading-relaxed mb-3">
           Navigate to the hosted instance:
         </p>
-        <div className="border border-rule bg-paper-2/30 p-4">
+        <a
+          href="https://agent.narra.nexus"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() =>
+            track({
+              event: "cta_click",
+              cta_name: "try_online",
+              cta_location: "docs_section",
+            })
+          }
+          className="block border border-rule bg-paper-2/30 p-4 hover:border-ink transition-colors"
+        >
           <code className="font-mono text-sm text-ink">
-            https://agent.narra.nexus
+            https://agent.narra.nexus &rarr;
           </code>
-        </div>
+        </a>
       </section>
 
       <section className="mb-10">

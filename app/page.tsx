@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { track } from "@/lib/analytics/track";
+import { CopyButton } from "@/components/analytics/copy-button";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -166,6 +170,13 @@ export default function Home() {
             href="https://agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "try_online",
+                cta_location: "hero",
+              })
+            }
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
           >
             Try Online
@@ -177,12 +188,26 @@ export default function Home() {
               names the asset NarraNexus.dmg, so this URL is release-stable. */}
           <a
             href="https://github.com/NetMindAI-Open/NarraNexus/releases/latest/download/NarraNexus.dmg"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "download_macos",
+                cta_location: "hero",
+              })
+            }
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
           >
             Download for macOS
           </a>
           <Link
             href="/docs/getting-started/quick-start"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "get_started",
+                cta_location: "hero",
+              })
+            }
             className="px-6 py-2.5 border border-ink text-ink font-body text-sm font-400 hover:bg-ink hover:text-paper transition-colors"
           >
             Get Started
@@ -417,6 +442,13 @@ export default function Home() {
               href="https://agent.narra.nexus"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                track({
+                  event: "cta_click",
+                  cta_name: "try_online",
+                  cta_location: "docs_section",
+                })
+              }
               className="self-start px-4 py-1.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"
             >
               Open NarraNexus Web
@@ -439,6 +471,13 @@ export default function Home() {
               href="https://github.com/NetMindAI-Open/NarraNexus/releases/latest"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                track({
+                  event: "cta_click",
+                  cta_name: "download_macos",
+                  cta_location: "docs_section",
+                })
+              }
               className="font-mono text-xs text-ink underline underline-offset-2 hover:text-muted transition-colors self-start"
             >
               Download latest release &rarr;
@@ -457,11 +496,10 @@ export default function Home() {
               Full local setup with tmux, 7 services, and hot-reload for
               development.
             </p>
-            <div className="border border-rule bg-paper-2/30 p-3">
-              <code className="font-mono text-xs text-ink break-all leading-relaxed">
-                git clone https://github.com/NetMindAI-Open/NarraNexus.git &amp;&amp; bash run.sh
-              </code>
-            </div>
+            <CopyButton
+              text="git clone https://github.com/NetMindAI-Open/NarraNexus.git && bash run.sh"
+              utm_location="home_quick_start"
+            />
           </div>
         </div>
 

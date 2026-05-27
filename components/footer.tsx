@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { track } from "@/lib/analytics/track";
+import type { CtaLocation, CtaName } from "@/lib/analytics/types";
 
 interface FooterLink {
   label: string;
   href: string;
   external?: boolean;
+  track?: { cta_name: CtaName; cta_location: CtaLocation };
 }
 
 interface FooterSection {
@@ -40,7 +45,12 @@ const footerSections: FooterSection[] = [
     title: "Organization",
     links: [
       { label: "NetMind.AI", href: "https://netmind.ai", external: true },
-      { label: "Try Online", href: "https://agent.narra.nexus", external: true },
+      {
+        label: "Try Online",
+        href: "https://agent.narra.nexus",
+        external: true,
+        track: { cta_name: "try_online", cta_location: "footer" },
+      },
     ],
   },
 ];
@@ -64,6 +74,11 @@ export function Footer() {
                       href={link.href}
                       target={link.external ? "_blank" : undefined}
                       rel={link.external ? "noopener noreferrer" : undefined}
+                      onClick={
+                        link.track
+                          ? () => track({ event: "cta_click", ...link.track! })
+                          : undefined
+                      }
                       className="text-sm font-body font-300 text-muted hover:text-ink transition-colors"
                     >
                       {link.label}

@@ -4,14 +4,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics/track";
+import type { CtaLocation, CtaName } from "@/lib/analytics/types";
 
-const navItems = [
+interface NavItem {
+  label: string;
+  href: string;
+  external?: boolean;
+  track?: { cta_name: CtaName; cta_location: CtaLocation };
+}
+
+const navItems: NavItem[] = [
   { label: "Features", href: "/#features" },
   { label: "Templates", href: "/templates" },
   { label: "Docs", href: "/docs/getting-started/quick-start" },
   { label: "Blog", href: "/blog" },
   { label: "Roadmap", href: "/#roadmap" },
-  { label: "Request Access", href: "/invite" },
+  {
+    label: "Request Access",
+    href: "/invite",
+    track: { cta_name: "get_invite_code", cta_location: "navbar" },
+  },
   {
     label: "GitHub",
     href: "https://github.com/NetMindAI-Open/NarraNexus",
@@ -75,6 +88,11 @@ export function Header() {
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
+              onClick={
+                item.track
+                  ? () => track({ event: "cta_click", ...item.track! })
+                  : undefined
+              }
               className={`font-body text-sm font-400 transition-colors ${
                 isNavActive(item.href)
                   ? "text-ink"
@@ -90,6 +108,13 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href="/docs/getting-started/quick-start"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "get_started",
+                cta_location: "navbar",
+              })
+            }
             className="hidden sm:inline-block px-4 py-1.5 border border-ink text-ink text-sm font-body font-400 hover:bg-ink hover:text-paper transition-colors"
           >
             Get Started
@@ -144,6 +169,11 @@ export function Header() {
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
+              onClick={
+                item.track
+                  ? () => track({ event: "cta_click", ...item.track! })
+                  : undefined
+              }
               className={`py-3 font-body text-base font-400 border-b border-rule last:border-b-0 transition-colors ${
                 isNavActive(item.href) ? "text-ink" : "text-muted hover:text-ink"
               }`}
@@ -153,6 +183,13 @@ export function Header() {
           ))}
           <Link
             href="/docs/getting-started/quick-start"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "get_started",
+                cta_location: "navbar",
+              })
+            }
             className="mt-4 sm:hidden inline-flex items-center justify-center px-4 py-2.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"
           >
             Get Started
