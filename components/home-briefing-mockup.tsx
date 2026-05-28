@@ -1,6 +1,6 @@
 /**
  * HomeBriefingMockup — high-fidelity HTML rendition of the
- * NarraNexus cloud app (dev-agent.narra.nexus/app/chat), built to match
+ * NarraNexus cloud app (agent.narra.nexus/app/chat), built to match
  * the real product surface section-for-section. Looped 20-second
  * cinematic: user types a prompt, sends it, the runtime pipeline
  * progresses through six steps, the agent replies, then everything
@@ -363,7 +363,7 @@ export function HomeBriefingMockup() {
           className="ml-auto font-mono tabular-nums"
           style={{ color: T.ink50, fontSize: 10, letterSpacing: "0.08em" }}
         >
-          dev-agent.narra.nexus
+          agent.narra.nexus
         </span>
       </div>
 

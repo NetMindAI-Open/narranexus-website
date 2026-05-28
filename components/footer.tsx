@@ -40,7 +40,7 @@ const footerSections: FooterSection[] = [
     title: "Organization",
     links: [
       { label: "NetMind.AI", href: "https://netmind.ai", external: true },
-      { label: "Try Online", href: "https://dev-agent.narra.nexus", external: true },
+      { label: "Try Online", href: "https://agent.narra.nexus", external: true },
     ],
   },
 ];

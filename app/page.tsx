@@ -274,7 +274,7 @@ export default function Home() {
 
         <div className="flex flex-wrap gap-3 sm:gap-4">
           <a
-            href="https://dev-agent.narra.nexus"
+            href="https://agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
@@ -597,7 +597,7 @@ export default function Home() {
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
-            href="https://dev-agent.narra.nexus"
+            href="https://agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
             className="px-7 py-3 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
