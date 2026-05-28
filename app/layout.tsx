@@ -40,24 +40,25 @@ const dmMono = DM_Mono({
 
 
 const siteUrl = "https://narra.nexus";
+const siteTitle = "NarraNexus — An agent team, ready in one click.";
 const siteDescription =
-  "Build agents with persistent memory, social identity, and modular capabilities. An open-source framework for agents that remember who you are.";
+  "A ready-to-run team of agents that already remember, collaborate, and use tools. Start from a template — cloud, desktop, or self-hosted. Open source.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "NarraNexus — Intelligence Emerges Through Connection",
+    default: siteTitle,
     template: "%s · NarraNexus",
   },
   description: siteDescription,
   applicationName: "NarraNexus",
   authors: [{ name: "NetMind" }],
   keywords: [
-    "agent framework",
+    "multi-agent",
+    "agent team",
     "open source",
     "LLM",
-    "persistent memory",
-    "multi-agent",
+    "agent templates",
     "MCP",
     "NarraNexus",
   ],
@@ -65,12 +66,12 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "NarraNexus",
-    title: "NarraNexus — Intelligence Emerges Through Connection",
+    title: siteTitle,
     description: siteDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: "NarraNexus — Intelligence Emerges Through Connection",
+    title: siteTitle,
     description: siteDescription,
   },
   robots: {

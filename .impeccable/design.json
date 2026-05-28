@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-26T00:00:00Z",
+  "title": "Design System: NarraNexus Marketing Site",
+  "extensions": {
+    "colorMeta": {
+      "newsprint-paper": {
+        "role": "neutral",
+        "displayName": "Newsprint Paper",
+        "canonical": "#e8eaed",
+        "tonalRamp": ["#1a1c1f", "#2e3137", "#46494f", "#6e7178", "#9b9ea4", "#c1c4c9", "#d9dce0", "#e8eaed"]
+      },
+      "pressroom-grey": {
+        "role": "neutral",
+        "displayName": "Pressroom Grey",
+        "canonical": "#dde0e4",
+        "tonalRamp": ["#191b1e", "#2c2f34", "#43464c", "#6a6d74", "#959a9f", "#bbbec3", "#d2d5da", "#dde0e4"]
+      },
+      "plate-grey": {
+        "role": "neutral",
+        "displayName": "Plate Grey",
+        "canonical": "#d2d5da",
+        "tonalRamp": ["#16181b", "#292c31", "#3f4248", "#666970", "#92959b", "#b5b8be", "#cacdd2", "#d2d5da"]
+      },
+      "press-ink": {
+        "role": "primary",
+        "displayName": "Press Ink",
+        "canonical": "#111214",
+        "tonalRamp": ["#08090a", "#111214", "#1d1f23", "#2d3038", "#444851", "#60656f", "#8a8e96", "#b4b7be"]
+      },
+      "halftone-grey": {
+        "role": "neutral",
+        "displayName": "Halftone Grey",
+        "canonical": "#60656f",
+        "tonalRamp": ["#0e0f12", "#1d1f23", "#2d3038", "#444851", "#60656f", "#8a8e96", "#b4b7be", "#dadce0"]
+      },
+      "halftone-grey-deep": {
+        "role": "neutral",
+        "displayName": "Halftone Grey Deep",
+        "canonical": "#3d4149",
+        "tonalRamp": ["#0c0d10", "#181a1d", "#262930", "#3d4149", "#5a5f68", "#838893", "#adb1ba", "#d7d9de"]
+      },
+      "linotype-blue": {
+        "role": "secondary",
+        "displayName": "Linotype Blue",
+        "canonical": "#334dff",
+        "tonalRamp": ["#0a1140", "#13205c", "#1c2e80", "#2540b3", "#334dff", "#5c70ff", "#8492ff", "#b4bdff"]
+      },
+      "hairline-rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "rgba(17,18,20,0.10)",
+        "tonalRamp": ["#1112141a"]
+      },
+      "hairline-rule-soft": {
+        "role": "neutral",
+        "displayName": "Hairline Rule Soft",
+        "canonical": "rgba(17,18,20,0.06)",
+        "tonalRamp": ["#1112140f"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only. One per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2. Carried by the sectionHeading utility." },
+      "title": { "displayName": "Title", "purpose": "Card and component headings." },
+      "body": { "displayName": "Body", "purpose": "All paragraphs. Light weight + open leading is the editorial signal." },
+      "body-small": { "displayName": "Body Small", "purpose": "Supporting copy in cards and FAQ answers." },
+      "label": { "displayName": "Label", "purpose": "All micro-voice: eyebrows, step numbers, date stamps, tags. Mono uppercase, generously tracked." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "color-150", "value": "150ms ease-out", "purpose": "Default duration for hover/focus color transitions on links, buttons, nav. Used via Tailwind `transition-colors`." },
+      { "name": "drawer-300", "value": "300ms ease-out", "purpose": "Mobile nav drawer max-height transition. The only animation on a layout property; justified by being a discrete open/close." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "container", "value": "1400px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary call-to-action. Sharp rectangle, ink fill, paper text. Hover shifts to halftone-grey (press, not wash).",
+      "html": "<button class=\"ds-btn-primary\">Try Online</button>",
+      "css": ".ds-btn-primary { background: #111214; color: #e8eaed; padding: 10px 24px; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.2; border: 0; border-radius: 0; cursor: pointer; transition: background-color 150ms ease-out; } .ds-btn-primary:hover { background: #60656f; } .ds-btn-primary:focus-visible { outline: 2px solid #111214; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action. Transparent fill with ink hairline border; inverts to filled ink on hover.",
+      "html": "<button class=\"ds-btn-outline\">Get Started</button>",
+      "css": ".ds-btn-outline { background: transparent; color: #111214; padding: 10px 24px; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.2; border: 1px solid #111214; border-radius: 0; cursor: pointer; transition: background-color 150ms ease-out, color 150ms ease-out; } .ds-btn-outline:hover { background: #111214; color: #e8eaed; } .ds-btn-outline:focus-visible { outline: 2px solid #111214; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Tertiary action. Hairline rule border, muted text. Sharpens to ink on hover.",
+      "html": "<button class=\"ds-btn-ghost\">GitHub</button>",
+      "css": ".ds-btn-ghost { background: transparent; color: #60656f; padding: 10px 24px; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.2; border: 1px solid rgba(17, 18, 20, 0.1); border-radius: 0; cursor: pointer; transition: border-color 150ms ease-out, color 150ms ease-out; } .ds-btn-ghost:hover { border-color: #111214; color: #111214; } .ds-btn-ghost:focus-visible { outline: 2px solid #111214; outline-offset: 2px; }"
+    },
+    {
+      "name": "Grid Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card cell inside a gap-px / bg-rule grid. Negative space between cards IS the divider — cards themselves have no borders.",
+      "html": "<div class=\"ds-card-grid\"><article class=\"ds-card\"><span class=\"ds-card-eyebrow\">STEP 01</span><h3 class=\"ds-card-title\">Set it up</h3><p class=\"ds-card-body\">Open the cloud app, install the macOS build, or run it locally from source. Pick the surface that fits.</p></article><article class=\"ds-card\"><span class=\"ds-card-eyebrow\">STEP 02</span><h3 class=\"ds-card-title\">Browse a template</h3><p class=\"ds-card-body\">Pick a ready-made agent team. A research desk, a content studio, a briefing bot.</p></article></div>",
+      "css": ".ds-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(17, 18, 20, 0.1); } .ds-card { background: #e8eaed; padding: 32px; } .ds-card-eyebrow { display: block; font-family: 'DM Mono', ui-monospace, monospace; font-size: 10px; font-weight: 400; line-height: 1; letter-spacing: 0.16em; text-transform: uppercase; color: #60656f; margin-bottom: 8px; } .ds-card-title { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 20px; font-weight: 700; line-height: 1.3; color: #111214; margin: 0 0 12px 0; } .ds-card-body { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 300; line-height: 1.65; color: #60656f; margin: 0; }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": "eyebrow",
+      "description": "The mandatory opener of every full-width section. 1px ink dash followed by mono uppercase label. The seal of the system.",
+      "html": "<div class=\"ds-eyebrow\"><span class=\"ds-eyebrow-dash\" aria-hidden=\"true\"></span><span class=\"ds-eyebrow-label\">CAPABILITIES</span></div>",
+      "css": ".ds-eyebrow { display: flex; align-items: center; gap: 12px; } .ds-eyebrow-dash { display: block; width: 32px; height: 1px; background: #111214; } .ds-eyebrow-label { font-family: 'DM Mono', ui-monospace, monospace; font-size: 11px; font-weight: 400; line-height: 1; letter-spacing: 0.16em; text-transform: uppercase; color: #60656f; }"
+    },
+    {
+      "name": "Mono Tag",
+      "kind": "chip",
+      "refersTo": "eyebrow",
+      "description": "Inline uppercase micro-label. Used for step numbers, tags, status markers. Lives at the bottom of cards above a hairline rule.",
+      "html": "<span class=\"ds-tag\">WEB &middot; DESKTOP &middot; LOCAL</span>",
+      "css": ".ds-tag { display: inline-block; font-family: 'DM Mono', ui-monospace, monospace; font-size: 10px; font-weight: 400; line-height: 1; letter-spacing: 0.12em; text-transform: uppercase; color: #60656f; padding: 12px 0 0 0; border-top: 1px solid rgba(17, 18, 20, 0.1); }"
+    },
+    {
+      "name": "Section Rule",
+      "kind": "custom",
+      "refersTo": "hr-rule",
+      "description": "Hairline divider between full-width sections. Constrained to the 1400px content width — never edge-to-edge.",
+      "html": "<hr class=\"ds-hr\" />",
+      "css": ".ds-hr { max-width: 1400px; margin: 0 auto; border: 0; border-top: 1px solid rgba(17, 18, 20, 0.1); height: 0; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header navigation link. Color shift only — no underline, no pill, no marker on active.",
+      "html": "<a href=\"#\" class=\"ds-nav-link\">Features</a> <a href=\"#\" class=\"ds-nav-link ds-nav-link-active\">Docs</a>",
+      "css": ".ds-nav-link { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 400; color: #60656f; text-decoration: none; transition: color 150ms ease-out; } .ds-nav-link:hover { color: #111214; } .ds-nav-link-active { color: #111214; } .ds-nav-link:focus-visible { outline: 2px solid #111214; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Editorial Workshop",
+    "overview": "This is a publication that happens to be a website. The vocabulary is borrowed from broadsheet newspapers and technical magazines: paper and ink, hairline rules, mono micro-labels, eyebrow dashes, gap-px grid lines that look like letterpress kerning. Every section reads like a column; every card is a clipping. The reader is invited to scan, not to interpret a UI.\n\nThe brand voice this serves is confident, plain, distinctive. The visual system carries the confidence; the copy carries the plainness; together they produce something that doesn't look like another AI-startup landing page. That distance is intentional. The category reflex — gradient hero, glossy cards, Stripe-y blue-purple radials — is the thing this rejects. So is the consumer-app pastel cliché (Notion-cream + soft pink, lifestyle photography). NarraNexus chose editorial over either, on purpose.\n\nAligned with the internal.netmind.foundation parent brand: Space Grotesk display, Inter body, DM Mono micro-labels, a paper-and-ink palette, sharp corners globally. Sibling NetMind surfaces share these tokens.",
+    "keyCharacteristics": [
+      "Paper-and-ink palette: warm-tinted cool neutrals + one electric blue, used sparingly",
+      "Editorial typography: Space Grotesk display, Inter body, DM Mono labels",
+      "Sharp corners globally; border-radius: 0 !important is a project-wide rule",
+      "Hairline rules and layered neutrals provide all depth; no shadows exist",
+      "Mono uppercase micro-labels (eyebrows, tags, dates) carry rhythm",
+      "A 72-pixel grid texture sits at 4% opacity behind every page"
+    ],
+    "rules": [
+      { "name": "The Ink-or-Blue Rule", "body": "Emphasis is binary. Press Ink is for confidence and finality. Linotype Blue is for technical specificity. Never both in the same composition.", "section": "colors" },
+      { "name": "The One-Tenth Blue Rule", "body": "Linotype Blue may carry no more than ~10% of a screen at full strength. Larger surface uses appear only as /8 – /30 alpha washes (e.g. architecture-layer tinting) so the blue stays punctuation, not fill.", "section": "colors" },
+      { "name": "The No-True-White Rule", "body": "#ffffff is forbidden. The paper is always slightly warm-cool grey. Equivalent for ink: #000000 is forbidden; the ink is #111214.", "section": "colors" },
+      { "name": "The Eyebrow Rule", "body": "Every full-width section opens with a horizontal hairline w-8 h-px bg-ink followed by a mono uppercase eyebrow. The dash + label is the section's seal — non-negotiable.", "section": "typography" },
+      { "name": "The 300-Weight Body Rule", "body": "Body copy is Inter 300. Inter 400 looks too heavy against Space Grotesk 700; Inter 500 looks like Material Design. The weight gap between body (300) and headline (700) is what gives the page its editorial quiet.", "section": "typography" },
+      { "name": "The Mono-for-Micro Rule", "body": "Anything that wants to whisper goes into DM Mono uppercase — never smaller sans, never italic, never a brighter color. Italics are forbidden by default; mono is the system's italic.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces do not lift. Hover does not raise. Focus does not glow softly. Where lift would be the reflex, change a color, change a weight, or add a hairline rule. Box-shadows are prohibited.", "section": "elevation" },
+      { "name": "The Gap-Is-The-Rule Rule", "body": "When dividing cards in a grid, use gap-px over a bg-rule parent. Never put borders on the cards themselves; the negative space does the work.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do open every section with the dash-and-eyebrow opener (1px dash + mono uppercase label in Halftone Grey).",
+      "Do divide cards with gap-px over a bg-rule parent. The negative space is the divider.",
+      "Do keep body copy at Inter 300, 15px, line-height 1.8. The editorial signal lives in the weight + leading.",
+      "Do confine Linotype Blue to technical-emphasis surfaces (architecture diagrams, data viz). At full strength it stays under 10% of a screen.",
+      "Do use mono uppercase labels (DM Mono, tracking-widest) for every micro-voice: eyebrows, step numbers, date stamps, tags.",
+      "Do prefer hairline rules and tonal layering for depth.",
+      "Do match what the PDF asked for: concise three-block layouts where the format earns its place. The 3-card pattern is a tool, not a default."
+    ],
+    "donts": [
+      "Don't use generic AI-startup SaaS aesthetic. No gradient heroes, no glossy cards with subtle shadows, no Stripe-y radial backgrounds, no hero-metric templates, no blue-purple gradient text.",
+      "Don't use consumer-app pastel cliché. No Notion-cream + soft pink, no friendly-but-bland rounded cards, no lifestyle photography, no smiling stock illustrations.",
+      "Don't use dev-tool framework marketing. No dense code snippets above the fold, no 'for builders by builders' copy.",
+      "Don't use AI sci-fi. No dark mode + neon + glassmorphism.",
+      "Don't use #ffffff or #000000. Paper is always #e8eaed. Ink is always #111214.",
+      "Don't use border-radius. Globally banned via * { border-radius: 0 !important }. If a corner needs softening, the answer is more whitespace.",
+      "Don't use box-shadows. Use hairline rules or layered neutrals.",
+      "Don't use side-stripe borders. No border-left: 4px solid accents.",
+      "Don't use gradient text. Solid color; emphasis via weight or size.",
+      "Don't use em dashes. Use commas, colons, semicolons, periods, or parentheses.",
+      "Don't add icons just to fill space. 24px stroke icons are allowed in cards where they advance scanability.",
+      "Don't add Layout / Motion / Responsive top-level sections to this file."
+    ]
+  }
+}
