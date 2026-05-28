@@ -22,6 +22,10 @@ jobs:
           # Execute deployment commands
           ssh -i ~/.ssh/deploy_key ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             set -e
+
+            # Ensure git uses the correct SSH key
+            export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
+
             echo "=== Pulling latest dev branch ==="
             cd /home/ubuntu/.narranexus_website/narranexus-website
             git fetch origin dev
