@@ -9,13 +9,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
+      - name: Deploy to EC2 via SSH
+        run: |
+          # Decode and setup SSH key
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+          # Add host to known_hosts to avoid prompt
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+          # Execute deployment commands
+          ssh -i ~/.ssh/deploy_key ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             set -e
             echo "=== Pulling latest dev branch ==="
             cd /home/ubuntu/.narranexus_website/narranexus-website
@@ -29,3 +34,4 @@ jobs:
 
             echo "=== Deployment complete ==="
             docker ps --filter name=narranexus-website --format 'Status: {{.Status}}'
+          EOF
