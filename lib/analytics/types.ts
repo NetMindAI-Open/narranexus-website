@@ -17,7 +17,8 @@ export type CtaLocation =
   | "navbar"
   | "footer"
   | "login_page"
-  | "docs_section";
+  | "docs_section"
+  | "final_cta";
 
 export type TrackPayload =
   | {
