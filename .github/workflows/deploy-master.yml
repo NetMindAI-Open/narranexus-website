@@ -1,9 +1,9 @@
-name: Deploy Dev to website.narra.nexus
+name: Deploy master to narra.nexus
 
 on:
   push:
     branches:
-      - dev
+      - master
 
 jobs:
   deploy:
@@ -11,31 +11,25 @@ jobs:
     steps:
       - name: Deploy to EC2 via SSH
         run: |
-          # Decode and setup SSH key
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | base64 -d > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-
-          # Add host to known_hosts to avoid prompt
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-          # Execute deployment commands
           ssh -i ~/.ssh/deploy_key ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             set -e
-
-            # Ensure git uses the correct SSH key
             export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no"
 
-            echo "=== Pulling latest dev branch ==="
+            echo "=== Pulling latest master branch ==="
             cd /home/ubuntu/.narranexus_website/narranexus-website
-            git fetch origin dev
-            git checkout dev
-            git pull origin dev
+            git fetch origin master
+            git checkout master
+            git pull origin master
 
-            echo "=== Rebuilding and redeploying dev (website.narra.nexus) ==="
-            cd /home/ubuntu/NetMind_RS_XYZ/NarraNexus-deploy/stacks/narranexus-website-dev
+            echo "=== Rebuilding and redeploying prod (narra.nexus) ==="
+            cd /home/ubuntu/NetMind_RS_XYZ/NarraNexus-deploy/stacks/narranexus-website
             docker compose up -d --build
 
-            echo "=== Deployment complete ==="
+            echo "=== Done ==="
             docker ps --filter name=narranexus-website --format 'Status: {{.Status}}'
           EOF
