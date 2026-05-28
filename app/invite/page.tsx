@@ -27,6 +27,7 @@ export default function InvitePage() {
       event: "cta_click",
       cta_name: "get_invite_code",
       cta_location: "login_page",
+      destination: "invite_page",
     });
   }, []);
 
@@ -55,6 +56,7 @@ export default function InvitePage() {
         event: "cta_click",
         cta_name: "request_invite",
         cta_location: "login_page",
+        destination: "invite_page",
       });
 
       if (data.status === "waitlisted") setOutcome("waitlisted");
@@ -100,6 +102,7 @@ export default function InvitePage() {
                 event: "cta_click",
                 cta_name: "try_online",
                 cta_location: "login_page",
+                destination: "cloud_login",
               })
             }
             className="text-ink underline underline-offset-2 hover:text-muted transition-colors"

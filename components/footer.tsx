@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { track } from "@/lib/analytics/track";
-import type { CtaLocation, CtaName } from "@/lib/analytics/types";
+import type { CtaLocation, CtaName, Destination } from "@/lib/analytics/types";
 
 interface FooterLink {
   label: string;
   href: string;
   external?: boolean;
-  track?: { cta_name: CtaName; cta_location: CtaLocation };
+  track?: { cta_name: CtaName; cta_location: CtaLocation; destination?: Destination };
 }
 
 interface FooterSection {
@@ -49,7 +49,7 @@ const footerSections: FooterSection[] = [
         label: "Try Online",
         href: "https://agent.narra.nexus",
         external: true,
-        track: { cta_name: "try_online", cta_location: "footer" },
+        track: { cta_name: "try_online", cta_location: "footer", destination: "cloud_login" },
       },
     ],
   },

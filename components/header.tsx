@@ -5,13 +5,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics/track";
-import type { CtaLocation, CtaName } from "@/lib/analytics/types";
+import type { CtaLocation, CtaName, Destination } from "@/lib/analytics/types";
 
 interface NavItem {
   label: string;
   href: string;
   external?: boolean;
-  track?: { cta_name: CtaName; cta_location: CtaLocation };
+  track?: { cta_name: CtaName; cta_location: CtaLocation; destination?: Destination };
 }
 
 const navItems: NavItem[] = [
@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
   {
     label: "Request Access",
     href: "/invite",
-    track: { cta_name: "get_invite_code", cta_location: "navbar" },
+    track: { cta_name: "get_invite_code", cta_location: "navbar", destination: "invite_page" },
   },
   {
     label: "GitHub",
@@ -113,6 +113,7 @@ export function Header() {
                 event: "cta_click",
                 cta_name: "get_started",
                 cta_location: "navbar",
+                destination: "docs_get_started",
               })
             }
             className="hidden sm:inline-block px-4 py-1.5 border border-ink text-ink text-sm font-body font-400 hover:bg-ink hover:text-paper transition-colors"
@@ -188,6 +189,7 @@ export function Header() {
                 event: "cta_click",
                 cta_name: "get_started",
                 cta_location: "navbar",
+                destination: "docs_get_started",
               })
             }
             className="mt-4 sm:hidden inline-flex items-center justify-center px-4 py-2.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"

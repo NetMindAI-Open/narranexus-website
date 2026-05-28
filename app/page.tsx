@@ -175,6 +175,7 @@ export default function Home() {
                 event: "cta_click",
                 cta_name: "try_online",
                 cta_location: "hero",
+                destination: "cloud_login",
               })
             }
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
@@ -193,6 +194,7 @@ export default function Home() {
                 event: "cta_click",
                 cta_name: "download_macos",
                 cta_location: "hero",
+                destination: "github_release",
               })
             }
             className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
@@ -206,6 +208,7 @@ export default function Home() {
                 event: "cta_click",
                 cta_name: "get_started",
                 cta_location: "hero",
+                destination: "docs_get_started",
               })
             }
             className="px-6 py-2.5 border border-ink text-ink font-body text-sm font-400 hover:bg-ink hover:text-paper transition-colors"
@@ -447,6 +450,7 @@ export default function Home() {
                   event: "cta_click",
                   cta_name: "try_online",
                   cta_location: "docs_section",
+                  destination: "cloud_login",
                 })
               }
               className="self-start px-4 py-1.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"
@@ -476,6 +480,7 @@ export default function Home() {
                   event: "cta_click",
                   cta_name: "download_macos",
                   cta_location: "docs_section",
+                  destination: "github_release",
                 })
               }
               className="font-mono text-xs text-ink underline underline-offset-2 hover:text-muted transition-colors self-start"

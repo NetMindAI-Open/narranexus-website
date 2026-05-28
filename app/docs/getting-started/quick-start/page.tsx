@@ -185,6 +185,7 @@ function DesktopMode() {
                 event: "cta_click",
                 cta_name: "download_macos",
                 cta_location: "docs_section",
+                destination: "github_release",
               })
             }
             className="font-500 text-ink underline"
@@ -251,6 +252,7 @@ function CloudMode() {
               event: "cta_click",
               cta_name: "try_online",
               cta_location: "docs_section",
+              destination: "cloud_login",
             })
           }
           className="block border border-rule bg-paper-2/30 p-4 hover:border-ink transition-colors"
@@ -282,6 +284,7 @@ function CloudMode() {
                   event: "cta_click",
                   cta_name: "get_invite_code",
                   cta_location: "docs_section",
+                  destination: "invite_page",
                 })
               }
               className="font-500 text-ink underline"

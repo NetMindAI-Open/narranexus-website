@@ -1,3 +1,10 @@
+export type Destination =
+  | "cloud_login"
+  | "github_release"
+  | "docs_get_started"
+  | "github_repo"
+  | "invite_page";
+
 export type CtaName =
   | "try_online"
   | "download_macos"
@@ -23,6 +30,7 @@ export type TrackPayload =
       event: "cta_click";
       cta_name: CtaName;
       cta_location: CtaLocation;
+      destination?: Destination;
     }
   | {
       event: "copy_git_clone_command";
