@@ -46,24 +46,28 @@ const scenarios = [
 
 const coreFeatures = [
   {
+    icon: "book",
     title: "Remembers the whole story, not just the last chapter",
     subtitle: "Narrative Memory",
     desc: "Topics become persistent storylines that carry their own history and active modules. New messages route to the right thread automatically. New subjects open a fresh one.",
     link: "/docs/core-concepts/narrative",
   },
   {
+    icon: "people",
     title: "Brings its own team to the job",
     subtitle: "Team Collaboration",
     desc: "Spin up a research desk, a content team, or an on-call rotation. Agents coordinate over a shared message bus: DM, group chat, hand-offs, and shared context across the whole team.",
     link: "/docs/modules/agent-comms",
   },
   {
+    icon: "clock",
     title: "Works while you sleep",
     subtitle: "Jobs & Long Tasks",
     desc: "Schedule one-offs, cron jobs, or always-on daemons. Agents work in the background and report back through chat when the results are ready.",
     link: "/docs/modules/jobs",
   },
   {
+    icon: "network",
     title: "Builds its own circle of contacts and fans",
     subtitle: "Social Network",
     desc: "Every person, team, and agent it meets joins a graph your agent maintains: roles, expertise, communication style, history. It adapts who it talks to and how, based on who's asking.",
@@ -205,6 +209,37 @@ function Icon({ name, className = "w-6 h-6" }: { name: string; className?: strin
           <path d="M12 20s-7-4.5-7-10a4 4 0 017-2.7A4 4 0 0119 10c0 5.5-7 10-7 10z" />
         </svg>
       );
+    case "book":
+      return (
+        <svg {...common}>
+          <path d="M3 4h7a2 2 0 012 2v14H5a2 2 0 01-2-2V4zM21 4h-7a2 2 0 00-2 2v14h7a2 2 0 002-2V4z" />
+        </svg>
+      );
+    case "people":
+      return (
+        <svg {...common}>
+          <circle cx="9" cy="8" r="3" />
+          <circle cx="17" cy="9" r="2.5" />
+          <path d="M3 20v-1.5a4 4 0 014-4h4a4 4 0 014 4V20" />
+          <path d="M15 20v-1a3 3 0 013-3h0a3 3 0 013 3v1" />
+        </svg>
+      );
+    case "clock":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3.5 3" />
+        </svg>
+      );
+    case "network":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="5" r="2" />
+          <circle cx="5" cy="19" r="2" />
+          <circle cx="19" cy="19" r="2" />
+          <path d="M11 7L6 17M13 7l5 10M7 19h10" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -333,7 +368,7 @@ export default function Home() {
         </div>
 
         <h2 className={`${sectionHeading} mb-3`}>
-          What you can put it to work on.
+          Three places to start.
         </h2>
         <p className="font-body font-300 text-muted mb-10 md:mb-12 max-w-2xl">
           Three starting points. Concept-level for now. Drop in a template
@@ -411,6 +446,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-px bg-rule">
           {coreFeatures.map((c) => (
             <div key={c.title} className="bg-paper p-6 md:p-8 group">
+              <Icon name={c.icon} className="w-6 h-6 text-ink mb-5" />
               <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
                 {c.subtitle}
               </span>
@@ -502,10 +538,14 @@ export default function Home() {
                     }`}
                     aria-hidden="true"
                   />
-                  {/* Timeline dot */}
+                  {/* Timeline dot — shipped milestones earn Linotype Blue
+                      (#334dff via --color-secondary). The single moment of
+                      the secondary accent on the homepage, per the Ink-or-
+                      Blue Rule: blue carries technical specificity, and
+                      "in production" is exactly that. */}
                   <span
                     className={`absolute -left-[4px] top-1.5 w-2.5 h-2.5 border ${
-                      r.done ? "bg-ink border-ink" : "bg-paper border-muted"
+                      r.done ? "bg-secondary border-secondary" : "bg-paper border-muted"
                     }`}
                     aria-hidden="true"
                   />
@@ -545,57 +585,42 @@ export default function Home() {
       <section className={sectionWrap}>
         <div className="flex items-center gap-3 mb-6">
           <span className="w-8 h-px bg-ink block" aria-hidden="true" />
-          <span className={eyebrow}>Ready</span>
+          <span className={eyebrow}>Tonight</span>
         </div>
 
         <h2 className={`${sectionHeading} mb-5 md:mb-6 max-w-3xl`}>
-          Start with your first agent team.
+          Talk to your first agent tonight.
         </h2>
         <p className="font-body font-300 text-base md:text-lg text-muted max-w-2xl mb-8 md:mb-10 leading-relaxed">
-          Pick a surface, import a template, send your first message. Most
-          people are talking to a working team inside a minute.
+          Sixty seconds from open to your first reply.
         </p>
 
-        <div className="flex flex-wrap gap-3 sm:gap-4">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
             href="https://agent.narra.nexus"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
+            className="px-7 py-3 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
           >
             Try Online
           </a>
           <a
             href="https://github.com/NetMindAI-Open/NarraNexus/releases/latest/download/NarraNexus.dmg"
-            className="px-6 py-2.5 bg-ink text-paper font-body text-sm font-400 hover:bg-muted transition-colors"
+            className="font-body font-300 text-sm text-muted hover:text-ink transition-colors underline underline-offset-2"
           >
-            Download for macOS
-          </a>
-          <Link
-            href="/docs/getting-started/quick-start"
-            className="px-6 py-2.5 border border-ink text-ink font-body text-sm font-400 hover:bg-ink hover:text-paper transition-colors"
-          >
-            Get Started
-          </Link>
-          <a
-            href="https://github.com/NetMindAI-Open/NarraNexus"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-2.5 border border-rule text-muted font-body text-sm font-400 hover:border-ink hover:text-ink transition-colors"
-          >
-            GitHub
+            Or download for macOS
           </a>
         </div>
 
-        <p className="font-body font-300 text-xs text-muted mt-4">
+        <p className="font-body font-300 text-xs text-muted mt-6">
           Cloud is invite-only while we scale up.{" "}
           <Link
             href="/invite"
             className="text-ink underline underline-offset-2 hover:text-muted transition-colors"
           >
-            Request an invite code
+            Request a code
           </Link>
-          , or run the desktop / local version with no invite needed.
+          .
         </p>
       </section>
     </div>
