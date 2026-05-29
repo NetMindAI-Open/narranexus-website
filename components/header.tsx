@@ -64,7 +64,7 @@ export function Header() {
           <Image
             src="/images/narra-nexus-logo-light-mode.svg"
             alt=""
-            width={1098}
+            width={875}
             height={472}
             className="block h-7 w-auto"
             priority
