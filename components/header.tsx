@@ -59,14 +59,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-paper border-b border-rule">
       <div className="max-w-[1400px] mx-auto px-6 h-14 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center -ml-1" aria-label="NarraNexus home">
+        {/* Logo: new SVG mark + "NarraNexus" wordmark */}
+        <Link href="/" className="flex items-center gap-2" aria-label="NarraNexus home">
           <Image
-            src="/images/logo-light-mode.png"
+            src="/images/narra-nexus-logo-light-mode.svg"
             alt=""
-            width={1360}
-            height={840}
-            className="block h-8 w-auto mr-0.5"
+            width={1098}
+            height={472}
+            className="block h-7 w-auto"
             priority
           />
           <span
