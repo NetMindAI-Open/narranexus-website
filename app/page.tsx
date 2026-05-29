@@ -130,7 +130,7 @@ const roadmap = [
     ],
   },
   {
-    version: "v1.1",
+    version: "v2.0",
     date: "2026 Q2",
     title: "Scale & Integrate",
     done: false,
