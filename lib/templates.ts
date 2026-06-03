@@ -86,6 +86,9 @@ export interface Template {
   /** ISO date strings. */
   created_at: string;
   updated_at: string;
+
+  /** When true, omit from the templates index and from generateStaticParams. The entry remains for archival / unhide. */
+  hidden?: boolean;
 }
 
 export const TEMPLATES: Template[] = [
@@ -194,6 +197,7 @@ export const TEMPLATES: Template[] = [
     agents: [{ name: "Manga Agent", agent_id: "agent_444f2c620021" }],
     created_at: "2026-05-19",
     updated_at: "2026-05-21",
+    hidden: true,
   },
   {
     slug: "pm-bridge-bot",
@@ -223,6 +227,51 @@ export const TEMPLATES: Template[] = [
     agents: [{ name: "Client Agent bot", agent_id: "agent_5094b522bded" }],
     created_at: "2026-05-20",
     updated_at: "2026-05-20",
+  },
+  {
+    slug: "web-development-team",
+    name: "Web Development Team",
+    short_description:
+      "A 4-agent build-and-ship pipeline — PM scopes the work, Web Developer builds it, Design Reviewer signs off, Vercel Deployment Agent ships it.",
+    long_description:
+      "Web Development Team is the full build-and-ship pipeline for frontend or Supabase-backed web apps. A Product Manager turns your brief into a scoped plan; the Web Developer implements (frontend-first by default, Supabase for any backing data); a Design Reviewer inspects the result against the brief; and the Vercel Deployment Agent ships the live URL.\n\nThe team ships 7 bundled skills covering the modern web-app toolchain: **impeccable** for design discipline, **frontend-design** + **agency-frontend-developer** for the front of house, **supabase** for the data layer, **image-generation** for placeholder + production assets, **vercel-deployments** for shipping, and a couple more covering the gaps. The PM-first orchestration keeps scope tight; the Vercel hand-off keeps the loop short — brief in, URL out.\n\nUse it for landing pages, portfolios, small SaaS dashboards, and Supabase-backed prototypes. The agents read each other's outputs, so you don't relay messages between them — give the PM the brief and let the pipeline run.",
+    usage_tip:
+      "Always start with the **Product Manager**. Drop a brief in plain English:\n\n> \"Build a marketing site for a coffee subscription startup. Hero with a video background, 3 plans, an about section, a waitlist form backed by Supabase. Brand is warm and editorial.\"\n\nWhat happens next:\n- PM returns a scoped plan + clarifying questions (answer them inline)\n- **Web Developer** implements the frontend, wires Supabase if needed, opens a preview\n- **Design Reviewer** inspects the result against the brief and your brand notes\n- **Vercel Deployment Agent** ships the production URL\n\nSkills worth invoking directly when relevant:\n- **impeccable** — for a discipline pass on a design decision (\"impeccable critique the hero\")\n- **supabase** — for schema + RLS work (\"set up the waitlist table with RLS\")\n- **vercel-deployments** — for a manual redeploy or env-var update\n\nNeeds a Vercel token. Supabase project URL + anon key only if you ask for a data layer.",
+    categories: ["development", "web"],
+    tags: [
+      "web-development",
+      "frontend",
+      "supabase",
+      "vercel",
+      "team",
+      "impeccable",
+      "design-review",
+    ],
+    bundle_url: "/templates/Web_Development-20260603.nxbundle",
+    bundle_size_bytes: 1286355,
+    bundle_sha256:
+      "8bb5e3a55ec37885a9251ce5e6486e01c234c65f9fea59299968d1e797d9fb8e",
+    author: { name: "NarraNexus team contributor" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.1",
+      narranexus_version_exported: "1.3.4",
+      agent_count: 4,
+      unique_skill_count: 7,
+      requires_external_mcp: false,
+      requires_credentials: [
+        "Vercel token (for the Vercel Deployment Agent)",
+        "Supabase project URL + anon key (optional, only if your app needs a backend)",
+      ],
+    },
+    agents: [
+      { name: "Product Manager", agent_id: "agent_de9d27421538" },
+      { name: "Web Developer", agent_id: "agent_62bd838e1fb5" },
+      { name: "Design Reviewer", agent_id: "agent_cd2f8240a8ab" },
+      { name: "Vercel Deployment Agent", agent_id: "agent_b1bb719c1a08" },
+    ],
+    created_at: "2026-06-03",
+    updated_at: "2026-06-03",
   },
   {
     slug: "overnight-coder",
@@ -367,7 +416,10 @@ export function getTemplate(slug: string): Template | undefined {
 
 export function allCategories(): string[] {
   const set = new Set<string>();
-  for (const t of TEMPLATES) t.categories.forEach((c) => set.add(c));
+  for (const t of TEMPLATES) {
+    if (t.hidden) continue;
+    t.categories.forEach((c) => set.add(c));
+  }
   return Array.from(set).sort();
 }
 
