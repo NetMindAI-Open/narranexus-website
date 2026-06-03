@@ -224,6 +224,141 @@ export const TEMPLATES: Template[] = [
     created_at: "2026-05-20",
     updated_at: "2026-05-20",
   },
+  {
+    slug: "overnight-coder",
+    name: "Overnight Coder",
+    short_description:
+      "An autonomous developer that picks up your TODO list at midnight and lands reviewable PRs by 7 AM — full test runs, meaningful commits, decisions logged.",
+    long_description:
+      "Overnight Coder works through coding tasks while your team sleeps. You hand it a list of tickets at end of day; it picks them up at midnight, reads the existing codebase to match your conventions, writes the code, runs the full test suite, and opens well-documented pull requests ready for morning review.\n\nThe agent ships two skills:\n- **git-commit-writer** crafts disciplined commits from staged diffs (imperative mood, the *why* not the *what*).\n- **cost-optimizer** audits expensive LLM calls so a long autonomous session doesn't surprise you on the bill.\n\nIt never pushes to main directly — every change goes through a PR with description, how-to-test, and a list of decisions made. Ambiguous tasks get a question comment, not a guess; any code it touches gets read before it's rewritten. By 7 AM you get a session report with PR links, test results, files touched, and any items that need a human decision.",
+    usage_tip:
+      "Talk to **Overnight Coder** at end of day. Give it a clear task list — branch names suggested, priorities flagged if relevant. For example:\n\n> \"Tonight: (1) fix the bug in /api/search query encoding, (2) add pagination to the products page, (3) refactor the auth middleware to the new token format.\"\n\nExpect back:\n- A pre-flight session plan with estimated time per task and branch names\n- A morning report (PR links, test status, decisions that need your call)\n\nAsk it to use specific skills:\n- **git-commit-writer** — \"write the commit message for the staged changes\"\n- **cost-optimizer** — \"audit my recent Claude usage and find expensive calls\"\n\nBest on desktop / self-hosted NarraNexus where the agent can actually run your test suite.",
+    categories: ["development", "automation"],
+    tags: [
+      "autonomous",
+      "coding",
+      "pull-requests",
+      "overnight",
+      "single-agent",
+      "git-commit-writer",
+      "cost-optimizer",
+    ],
+    bundle_url: "/templates/overnight-coder.nxbundle",
+    bundle_size_bytes: 10219,
+    bundle_sha256:
+      "d8401fac845faf5e731d66cb8a93f1aecdcca8cd6361af2b3b759d38308caf28",
+    author: { name: "Community contributor" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.1",
+      narranexus_version_exported: "1.7.2",
+      agent_count: 1,
+      unique_skill_count: 2,
+      requires_external_mcp: false,
+      requires_credentials: [
+        "Git access to the repo you want it to work on",
+        "Test runner reachable from the agent's workspace (Desktop / self-hosted recommended)",
+      ],
+    },
+    agents: [{ name: "Overnight Coder", agent_id: "agent_d25dc396193c" }],
+    created_at: "2026-06-02",
+    updated_at: "2026-06-02",
+  },
+  {
+    slug: "sql-assistant",
+    name: "SQL Assistant",
+    short_description:
+      "Ask in plain English, get optimized SQL with an explanation and index suggestions — works across PostgreSQL, MySQL, SQLite.",
+    long_description:
+      "SQL Assistant turns natural-language questions into optimized SQL queries. Ask \"show me users who signed up last week but never logged in\" and it returns the LEFT JOIN plus a paragraph explaining how the query works and which index will make it fast.\n\nBeyond translation, the agent debugs slow queries: paste an EXPLAIN ANALYZE plan and it identifies full table scans, missing indexes, and subquery rewrites — typical wins take a 12-second query under 200ms. It also documents schemas, suggests fixes for SQL errors, and explains execution plans in simple terms.\n\nIt ships the **model-cost-compare** skill so you can decide whether a heavy query-generation session is worth the LLM cost — compare token prices across major models and pick the right one.\n\nGuardrail: it warns before any DELETE or UPDATE without a WHERE clause, and never executes destructive statements itself — you copy the SQL out and run it.",
+    usage_tip:
+      "Talk to **SQL Assistant**. Three modes:\n\n**1. Plain-English → SQL**\n> \"From `orders`, `users`, and `refunds`, give me the top 10 net-revenue users last quarter, excluding any with refund rate over 50%.\"\n\nIt outputs the SQL + a quick explanation and any index recommendations.\n\n**2. Optimize a slow query**\n> Paste your query or EXPLAIN ANALYZE plan and say \"this takes 12 seconds, help me optimize.\"\n\n**3. Debug an error**\n> Paste the error and the query — it diagnoses and suggests a fix.\n\nAsk it to use **model-cost-compare** (\"compare model costs for this workload\") when planning a heavy session and want the cheapest capable model.\n\nWorks against PostgreSQL, MySQL, and SQLite syntax. The agent never runs destructive statements — you copy the SQL out and execute yourself.",
+    categories: ["development", "data"],
+    tags: [
+      "sql",
+      "database",
+      "query-optimization",
+      "postgres",
+      "mysql",
+      "single-agent",
+      "model-cost-compare",
+    ],
+    bundle_url: "/templates/sql-assistant.nxbundle",
+    bundle_size_bytes: 7909,
+    bundle_sha256:
+      "dce3590e3856657055e5fdf16d058bc16b93d5e1ab65fa6c32592e81a65e21f2",
+    author: { name: "Community contributor" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.1",
+      narranexus_version_exported: "1.7.2",
+      agent_count: 1,
+      unique_skill_count: 1,
+      requires_external_mcp: false,
+      requires_credentials: [],
+    },
+    agents: [{ name: "SQL Assistant", agent_id: "agent_43fa5b5b9ee3" }],
+    created_at: "2026-06-02",
+    updated_at: "2026-06-02",
+  },
+  {
+    slug: "travel-planner",
+    name: "Travel Planner",
+    short_description:
+      "Plans trips like a local — day-by-day itineraries with timing, costs in USD, transit between stops, and 2-3 options at every price tier.",
+    long_description:
+      "Travel Planner builds the kind of trip a friend who lives there would plan: balanced between bucket-list highlights and hidden gems, obsessively organized on logistics, every line item priced in USD.\n\nGive it a destination, number of travelers, dates, and a budget — it produces a day-by-day itinerary with morning/afternoon/evening blocks, transit time between stops (it won't stack a 9 AM in Shibuya with a 10 AM in Asakusa), opening hours, advance-booking notes, and a full budget breakdown across hotels, food, activities, and transit.\n\n2-3 options per category at different price tiers (budget / mid-range / luxury) so you decide rather than feel locked in. Visa requirements, vaccination needs, safety advisories, seasonal closures, and local holidays all surfaced upfront. Packing lists and pre-trip checklists tailored to the destination.\n\nThe agent doesn't book — it plans. You handle the actual reservations using the names and links it provides.",
+    usage_tip:
+      "Talk to **Travel Planner**. Give it the basics in one message:\n\n> \"5 days in Tokyo, 2 travelers, late November, mid-range budget ~$3000 total (excluding flights). Must do: teamLab, Tsukiji. Avoid: super-touristy stuff.\"\n\nExpect back:\n- A total budget breakdown (hotels / food / activities / transit / buffer)\n- A day-by-day itinerary with timing, costs, opening hours, and transit notes between stops\n- 2-3 alternatives for accommodation, dining, and activities at different price points\n- Visa / vaccination / safety notes for international trips, plus a pre-trip checklist\n\nFollow-up questions work great:\n- \"What if it rains on day 3 — what's the backup plan?\"\n- \"Swap the budget hotel for something nicer, keep the total under $3500.\"\n- \"My partner is gluten-free, redo the dining recs.\"\n\nThe agent won't book anything — it gives you names, prices, and links so you book yourself.",
+    categories: ["personal", "lifestyle"],
+    tags: ["travel", "itinerary", "planning", "budget", "single-agent"],
+    bundle_url: "/templates/travel-planner.nxbundle",
+    bundle_size_bytes: 6657,
+    bundle_sha256:
+      "4cdcb237cccd1bb82fc72082bbed10152accdb79b5303fc9f49ed56617b5d2d9",
+    author: { name: "Community contributor" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.1",
+      narranexus_version_exported: "1.7.2",
+      agent_count: 1,
+      unique_skill_count: 0,
+      requires_external_mcp: false,
+      requires_credentials: [],
+    },
+    agents: [{ name: "Travel Planner", agent_id: "agent_67dafae08e7c" }],
+    created_at: "2026-06-02",
+    updated_at: "2026-06-02",
+  },
+  {
+    slug: "phishing-detector",
+    name: "Phishing Detector",
+    short_description:
+      "Paste a suspicious email or URL — get a 0-100 phishing score with specific red flags, recommended action, and a safe analysis (no clicks).",
+    long_description:
+      "Phishing Detector analyzes emails, URLs, and messages for phishing and social-engineering indicators. Paste a suspicious email and it returns a 0-100 risk score with concrete red flags: sender-domain homoglyph attacks (paypa1.com vs paypal.com), urgency language, generic greetings, link/text mismatches, and unrelated link destinations.\n\nIt structures the analysis so you understand *why* something is suspicious — not just a binary yes/no. Specific indicators get cited, the recommended action is explicit (\"do NOT click any links, go to paypal.com directly\"), and uncertain cases get flagged for human review rather than waved through.\n\nFor teams, it can also produce weekly phishing-attempt summaries: counts by attack type (credential phishing, invoice scams, CEO impersonation), trends month-over-month, and which functions are getting targeted. Pair it with a Slack channel or a cron schedule for a passive monitoring posture.\n\nSafety: the agent never visits or fetches suspicious URLs — it analyzes the structure of the URL and message only.",
+    usage_tip:
+      "Talk to **Phishing Detector** any time you get a sketchy email or message. Three modes:\n\n**1. Single-message check**\n> Paste the email body, the sender, and any URLs.\n> \"Is this legit?\"\n\nGet back: phishing score (0-100), specific red flags, and a recommended action.\n\n**2. URL-only check**\n> \"Is `hxxp://paypa1-secure.xyz/login` safe?\"\n\nThe agent analyzes domain structure *without ever visiting the URL*.\n\n**3. Trend / summary report**\n> \"Give me a March phishing report from the messages I flagged.\"\n\nGet a breakdown by attack type, trend lines, and recommended actions for the team.\n\nThe agent is intentionally cautious — it flags ambiguous cases for human review rather than greenlight them.",
+    categories: ["security", "productivity"],
+    tags: ["phishing", "security", "email", "url-check", "single-agent"],
+    bundle_url: "/templates/phishing-detector.nxbundle",
+    bundle_size_bytes: 6003,
+    bundle_sha256:
+      "1f5c539c06bb2861ccafa53dfc640f9c2de57d8303d5746b38b9ee34e88ff5c1",
+    author: { name: "Community contributor" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.1",
+      narranexus_version_exported: "1.7.2",
+      agent_count: 1,
+      unique_skill_count: 0,
+      requires_external_mcp: false,
+      requires_credentials: [],
+    },
+    agents: [{ name: "Phishing Detector", agent_id: "agent_5f9b21650469" }],
+    created_at: "2026-06-02",
+    updated_at: "2026-06-02",
+  },
 ];
 
 export function getTemplate(slug: string): Template | undefined {
