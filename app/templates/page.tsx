@@ -15,6 +15,7 @@ export default function TemplatesIndex() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return TEMPLATES.filter((t) => {
+      if (t.hidden) return false;
       if (activeCategory && !t.categories.includes(activeCategory)) return false;
       if (!q) return true;
       const haystack = [

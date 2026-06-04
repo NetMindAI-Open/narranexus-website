@@ -7,7 +7,7 @@ const eyebrow =
   "font-mono text-[11px] uppercase tracking-widest text-muted";
 
 export function generateStaticParams() {
-  return TEMPLATES.map((t) => ({ slug: t.slug }));
+  return TEMPLATES.filter((t) => !t.hidden).map((t) => ({ slug: t.slug }));
 }
 
 export async function generateMetadata({
