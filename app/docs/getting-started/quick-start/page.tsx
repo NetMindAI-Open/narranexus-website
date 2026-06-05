@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics/track";
 import { CopyButton } from "@/components/analytics/copy-button";
 
@@ -321,6 +321,11 @@ function CloudMode() {
 
 export default function QuickStartPage() {
   const [active, setActive] = useState<Mode>("local");
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).gtag?.("event", "docs_get_started_page_view");
+  }, []);
 
   return (
     <article>
