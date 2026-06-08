@@ -52,6 +52,9 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: "NarraNexus",
+  icons: {
+    icon: "/images/narra-nexus-logo-light-mode.svg",
+  },
   authors: [{ name: "NetMind" }],
   keywords: [
     "multi-agent",
