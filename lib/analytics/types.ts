@@ -10,7 +10,8 @@ export type CtaName =
   | "download_macos"
   | "get_started"
   | "get_invite_code"
-  | "request_invite";
+  | "request_invite_submit"
+  | "request_invite_success";
 
 export type CtaLocation =
   | "hero"

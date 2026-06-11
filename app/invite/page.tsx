@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { track } from "@/lib/analytics/track";
 
@@ -22,21 +22,19 @@ export default function InvitePage() {
   const [outcome, setOutcome] = useState<Outcome | null>(null);
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    track({
-      event: "cta_click",
-      cta_name: "get_invite_code",
-      cta_location: "login_page",
-      destination: "invite_page",
-    });
-  }, []);
-
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || loading) return;
     setLoading(true);
     setOutcome(null);
     setMessage("");
+
+    track({
+      event: "cta_click",
+      cta_name: "request_invite_submit",
+      cta_location: "login_page",
+      destination: "invite_page",
+    });
 
     try {
       const res = await fetch("/api/invite", {
@@ -54,7 +52,7 @@ export default function InvitePage() {
 
       track({
         event: "cta_click",
-        cta_name: "request_invite",
+        cta_name: "request_invite_success",
         cta_location: "login_page",
         destination: "invite_page",
       });
