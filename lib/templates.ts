@@ -225,6 +225,41 @@ export const TEMPLATES: Template[] = [
     created_at: "2026-05-20",
     updated_at: "2026-05-20",
   },
+  {
+    slug: "gaokao-team",
+    name: "Gaokao Grading Team",
+    short_description:
+      "A 5-agent exam-review team that simulates a candidate workflow and grades Chinese, Math, and English submissions before producing an overall assessment.",
+    long_description:
+      "Gaokao Grading Team is a 5-agent team for reviewing Gaokao-style exam performance. A candidate agent works with subject-specific graders for Chinese, Math, and English, then a comprehensive evaluator synthesizes the subject feedback into an overall assessment.\n\nThe template includes dedicated answer-reference skills for 2026 Chinese Paper 1, Math Paper 1, and English Paper 1, allowing each subject grader to evaluate against the bundled material rather than acting as a generic tutor.\n\nUse it as a structured demo of multi-agent grading, subject-specialist review, and final report synthesis.",
+    usage_tip:
+      "**Start with the 考生 agent** to submit or discuss answers. The subject graders handle their own domains, and 综合评估 is the final synthesis point.\n\nSuggested flow:\n- Ask 考生 to provide the exam response or start a review session\n- Let 语文阅卷, 数学阅卷, and 英语阅卷 evaluate their subject areas\n- Ask 综合评估 for the final cross-subject summary, strengths, weaknesses, and improvement priorities\n\nExpect: subject-level grading feedback followed by an integrated assessment. Configure your LLM providers in Settings → Providers before running the team.",
+    categories: ["education", "team"],
+    tags: ["gaokao", "grading", "multi-agent", "exam-review", "assessment"],
+    bundle_url: "/templates/gaokao-team.nxbundle",
+    bundle_size_bytes: 5823639,
+    bundle_sha256:
+      "24e9c7df2a57266841d69518965f8e67c88ef21cac0c09de3272fe8d59d1c8c1",
+    author: { name: "NarraNexus team" },
+    license: "MIT",
+    manifest_summary: {
+      bundle_format_version: "1.1",
+      narranexus_version_exported: "1.8.2",
+      agent_count: 5,
+      unique_skill_count: 3,
+      requires_external_mcp: false,
+      requires_credentials: [],
+    },
+    agents: [
+      { name: "数学阅卷", agent_id: "agent_04699475d9aa" },
+      { name: "英语阅卷", agent_id: "agent_079eae43e030" },
+      { name: "语文阅卷", agent_id: "agent_a6d15c020140" },
+      { name: "综合评估", agent_id: "agent_dd9b2202192a" },
+      { name: "考生", agent_id: "agent_f40aaf894455" },
+    ],
+    created_at: "2026-06-16",
+    updated_at: "2026-06-16",
+  },
 ];
 
 export function getTemplate(slug: string): Template | undefined {
