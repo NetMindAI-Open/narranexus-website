@@ -237,9 +237,9 @@ export const TEMPLATES: Template[] = [
     categories: ["education", "team"],
     tags: ["gaokao", "grading", "multi-agent", "exam-review", "assessment"],
     bundle_url: "/templates/gaokao-team.nxbundle",
-    bundle_size_bytes: 5823639,
+    bundle_size_bytes: 5827206,
     bundle_sha256:
-      "24e9c7df2a57266841d69518965f8e67c88ef21cac0c09de3272fe8d59d1c8c1",
+      "26b86d2c1e443ced39e2c8a68c03dacd9c71673eaad9dbd193109fba5d568a77",
     author: { name: "NarraNexus team" },
     license: "MIT",
     manifest_summary: {
@@ -251,14 +251,14 @@ export const TEMPLATES: Template[] = [
       requires_credentials: [],
     },
     agents: [
-      { name: "数学阅卷", agent_id: "agent_04699475d9aa" },
-      { name: "英语阅卷", agent_id: "agent_079eae43e030" },
-      { name: "语文阅卷", agent_id: "agent_a6d15c020140" },
-      { name: "综合评估", agent_id: "agent_dd9b2202192a" },
-      { name: "考生", agent_id: "agent_f40aaf894455" },
+      { name: "数学阅卷", agent_id: "agent_53682ffaf098" },
+      { name: "英语阅卷", agent_id: "agent_11a1dbfda6b4" },
+      { name: "语文阅卷", agent_id: "agent_ed13f9cadb31" },
+      { name: "综合评估", agent_id: "agent_e70e2c7679a1" },
+      { name: "考生", agent_id: "agent_463c52a8037a" },
     ],
     created_at: "2026-06-16",
-    updated_at: "2026-06-16",
+    updated_at: "2026-06-17",
   },
 ];
 
