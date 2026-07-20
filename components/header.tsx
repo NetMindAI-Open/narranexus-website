@@ -107,6 +107,21 @@ export function Header() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <Link
+            href="/connect"
+            onClick={() =>
+              track({
+                event: "cta_click",
+                cta_name: "connect",
+                cta_location: "navbar",
+                destination: "connect_page",
+              })
+            }
+            className="hidden sm:inline-block px-4 py-1.5 border border-rule text-muted text-sm font-body font-400 hover:border-ink hover:text-ink transition-colors"
+          >
+            Find Us
+          </Link>
+
+          <Link
             href="/docs/getting-started/quick-start"
             onClick={() =>
               track({
@@ -182,20 +197,38 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/docs/getting-started/quick-start"
-            onClick={() =>
-              track({
-                event: "cta_click",
-                cta_name: "get_started",
-                cta_location: "navbar",
-                destination: "docs_get_started",
-              })
-            }
-            className="mt-4 sm:hidden inline-flex items-center justify-center px-4 py-2.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"
-          >
-            Get Started
-          </Link>
+          <div className="mt-4 sm:hidden flex items-center gap-2">
+            <Link
+              href="/connect"
+              onClick={() => {
+                track({
+                  event: "cta_click",
+                  cta_name: "connect",
+                  cta_location: "navbar",
+                  destination: "connect_page",
+                });
+                setMobileOpen(false);
+              }}
+              className="flex-1 inline-flex items-center justify-center px-4 py-2.5 border border-rule text-ink text-sm font-body font-400 hover:border-ink transition-colors"
+            >
+              Find Us
+            </Link>
+            <Link
+              href="/docs/getting-started/quick-start"
+              onClick={() => {
+                track({
+                  event: "cta_click",
+                  cta_name: "get_started",
+                  cta_location: "navbar",
+                  destination: "docs_get_started",
+                });
+                setMobileOpen(false);
+              }}
+              className="flex-1 inline-flex items-center justify-center px-4 py-2.5 bg-ink text-paper text-sm font-body font-400 hover:bg-muted transition-colors"
+            >
+              Get Started
+            </Link>
+          </div>
         </nav>
       </div>
     </header>

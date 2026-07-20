@@ -3,7 +3,8 @@ export type Destination =
   | "github_release"
   | "docs_get_started"
   | "github_repo"
-  | "invite_page";
+  | "invite_page"
+  | "connect_page";
 
 export type CtaName =
   | "try_online"
@@ -11,7 +12,8 @@ export type CtaName =
   | "get_started"
   | "get_invite_code"
   | "request_invite_submit"
-  | "request_invite_success";
+  | "request_invite_success"
+  | "connect";
 
 export type CtaLocation =
   | "hero"
