@@ -12,6 +12,7 @@
   --color-rule-2: rgba(17, 18, 20, 0.06);
   --color-accent: #111214;
   --color-secondary: #334dff;
+  --color-carbon: #e8704a;    /* warm accent — used by the /event page */
 
   /* ── Typography tokens — matches internal.netmind.foundation ── */
   /* Display: Space Grotesk */

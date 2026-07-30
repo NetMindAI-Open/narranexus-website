@@ -30,6 +30,7 @@ const navItems: NavItem[] = [
     href: "https://github.com/NetMindAI-Open/NarraNexus",
     external: true,
   },
+  { label: "Event", href: "/event" },
 ];
 
 export function Header() {
@@ -53,6 +54,7 @@ export function Header() {
     if (href === "/blog" && pathname.startsWith("/blog")) return true;
     if (href === "/templates" && pathname.startsWith("/templates")) return true;
     if (href === "/invite" && pathname.startsWith("/invite")) return true;
+    if (href === "/event" && pathname.startsWith("/event")) return true;
     return false;
   };
 
